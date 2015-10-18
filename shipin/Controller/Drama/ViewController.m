@@ -330,7 +330,7 @@
 -(void) createSpreadOutButton
 {
     _lableNewLine = [[UILabel alloc ] initWithFrame:CGRectMake(0, btnGood.frame.size.height+btnGood.frame.origin.y, SCREEN_WIDTH, 40)];
-    [_lableNewLine setText:@"新上线"];
+    [_lableNewLine setText:@"搜索更多"];
     [_lableNewLine setBackgroundColor:[UIColor clearColor]];
     [_lableNewLine setFont:[UIFont systemFontOfSize:14]];
     [_lableNewLine setTextAlignment:NSTextAlignmentCenter];

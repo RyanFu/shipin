@@ -9,8 +9,6 @@
 #import "ShareView.h"
 #import "UIERealTimeBlurView.h"
 #import "WeiboSDK.h"
-#import <TencentOpenAPI/QQApiInterfaceObject.h>
-#import <TencentOpenAPI/QQApiInterface.h>
 
 //调用分享后，超过多长时间没有回调就算是分享成功
 #define waitShareConfirmTimeLength  120
@@ -132,62 +130,62 @@ static ShareView *GlobalShareView;
     [labelWeiBo setFont:[UIFont systemFontOfSize:13]];
     [self addSubview:labelWeiBo];
     
-    //QQ好友
-    UIButton *buttonQQ=[[UIButton alloc]initWithFrame:CGRectMake(buttonWeiChat.frame.origin.x, labelWeiChat.frame.origin.y+labelWeiChat.frame.size.height+lineSpacing, logoWidth, logoHeight)];
-    [buttonQQ setImage:[UIImage imageNamed:@"button_share_qq_friend.png"] forState:UIControlStateNormal];
-    buttonQQ.backgroundColor=[UIColor clearColor];
-    [buttonQQ.imageView setContentMode:UIViewContentModeScaleAspectFit];
-    [buttonQQ addTarget:self action:@selector(touchUpShareToQQ:) forControlEvents:UIControlEventTouchUpInside];
-    buttonQQ.tag=6;
-    [self addSubview:buttonQQ];
-    
-    //QQ好友文本
-    UILabel *labelQQ=[[UILabel alloc]initWithFrame:CGRectMake(buttonQQ.frame.origin.x,
-                                                              buttonQQ.frame.origin.y+ buttonQQ.frame.size.height +logoToLabelHeight,
-                                                              buttonQQ.frame.size.width,
-                                                              labelHeight)];
-    [labelQQ setText:@"QQ"];
-    [labelQQ setTextAlignment:NSTextAlignmentCenter];
-    [labelQQ setFont:[UIFont systemFontOfSize:13]];
-    [self addSubview:labelQQ];
-    
-    //QQ空间
-    UIButton *buttonQQZone=[[UIButton alloc]initWithFrame:CGRectMake(buttonWeiChat.frame.origin.x+buttonWeiChat.frame.size.width+logoSeq, labelWeiChat.frame.origin.y+labelWeiChat.frame.size.height+lineSpacing, logoWidth, logoHeight)];
-    [buttonQQZone setImage:[UIImage imageNamed:@"button_share_qzone.png"] forState:UIControlStateNormal];
-    buttonQQZone.backgroundColor=[UIColor clearColor];
-    [buttonQQZone.imageView setContentMode:UIViewContentModeScaleAspectFit];
-    [buttonQQZone addTarget:self action:@selector(touchUpShareToQQZone:) forControlEvents:UIControlEventTouchUpInside];
-    buttonQQZone.tag=7;
-    [self addSubview:buttonQQZone];
-    
-    //QQ空间文本
-    UILabel *labelQQZone=[[UILabel alloc]initWithFrame:CGRectMake(buttonQQZone.frame.origin.x,
-                                                                  buttonQQZone.frame.origin.y+ buttonQQZone.frame.size.height +logoToLabelHeight,
-                                                                  buttonQQZone.frame.size.width,
-                                                                  labelHeight)];
-    [labelQQZone setText:@"QQ空间"];
-    [labelQQZone setTextAlignment:NSTextAlignmentCenter];
-    [labelQQZone setFont:[UIFont systemFontOfSize:13]];
-    [self addSubview:labelQQZone];
-    
-    //复制
-    UIButton *buttonCopy=[[UIButton alloc]initWithFrame:CGRectMake(buttonWeiChatFriend.frame.origin.x+buttonWeiChatFriend.frame.size.width+logoSeq, labelWeiChat.frame.origin.y+labelWeiChat.frame.size.height+lineSpacing, logoWidth, logoHeight)];
-    [buttonCopy setImage:[UIImage imageNamed:@"button_share_copy.png"] forState:UIControlStateNormal];
-    buttonCopy.backgroundColor=[UIColor clearColor];
-    [buttonCopy.imageView setContentMode:UIViewContentModeScaleAspectFit];
-    [buttonCopy addTarget:self action:@selector(touchUpCopy:) forControlEvents:UIControlEventTouchUpInside];
-    buttonCopy.tag=5;
-    [self addSubview:buttonCopy];
-    
-    //复制文本
-    UILabel *labelCopy=[[UILabel alloc]initWithFrame:CGRectMake(buttonCopy.frame.origin.x,
-                                                                buttonCopy.frame.origin.y+ buttonCopy.frame.size.height +logoToLabelHeight,
-                                                                buttonCopy.frame.size.width,
-                                                                labelHeight)];
-    [labelCopy setText:@"复制链接"];
-    [labelCopy setTextAlignment:NSTextAlignmentCenter];
-    [labelCopy setFont:[UIFont systemFontOfSize:13]];
-    [self addSubview:labelCopy];
+//    //QQ好友
+//    UIButton *buttonQQ=[[UIButton alloc]initWithFrame:CGRectMake(buttonWeiChat.frame.origin.x, labelWeiChat.frame.origin.y+labelWeiChat.frame.size.height+lineSpacing, logoWidth, logoHeight)];
+//    [buttonQQ setImage:[UIImage imageNamed:@"button_share_qq_friend.png"] forState:UIControlStateNormal];
+//    buttonQQ.backgroundColor=[UIColor clearColor];
+//    [buttonQQ.imageView setContentMode:UIViewContentModeScaleAspectFit];
+//    [buttonQQ addTarget:self action:@selector(touchUpShareToQQ:) forControlEvents:UIControlEventTouchUpInside];
+//    buttonQQ.tag=6;
+//    [self addSubview:buttonQQ];
+//    
+//    //QQ好友文本
+//    UILabel *labelQQ=[[UILabel alloc]initWithFrame:CGRectMake(buttonQQ.frame.origin.x,
+//                                                              buttonQQ.frame.origin.y+ buttonQQ.frame.size.height +logoToLabelHeight,
+//                                                              buttonQQ.frame.size.width,
+//                                                              labelHeight)];
+//    [labelQQ setText:@"QQ"];
+//    [labelQQ setTextAlignment:NSTextAlignmentCenter];
+//    [labelQQ setFont:[UIFont systemFontOfSize:13]];
+//    [self addSubview:labelQQ];
+//    
+//    //QQ空间
+//    UIButton *buttonQQZone=[[UIButton alloc]initWithFrame:CGRectMake(buttonWeiChat.frame.origin.x+buttonWeiChat.frame.size.width+logoSeq, labelWeiChat.frame.origin.y+labelWeiChat.frame.size.height+lineSpacing, logoWidth, logoHeight)];
+//    [buttonQQZone setImage:[UIImage imageNamed:@"button_share_qzone.png"] forState:UIControlStateNormal];
+//    buttonQQZone.backgroundColor=[UIColor clearColor];
+//    [buttonQQZone.imageView setContentMode:UIViewContentModeScaleAspectFit];
+//    [buttonQQZone addTarget:self action:@selector(touchUpShareToQQZone:) forControlEvents:UIControlEventTouchUpInside];
+//    buttonQQZone.tag=7;
+//    [self addSubview:buttonQQZone];
+//    
+//    //QQ空间文本
+//    UILabel *labelQQZone=[[UILabel alloc]initWithFrame:CGRectMake(buttonQQZone.frame.origin.x,
+//                                                                  buttonQQZone.frame.origin.y+ buttonQQZone.frame.size.height +logoToLabelHeight,
+//                                                                  buttonQQZone.frame.size.width,
+//                                                                  labelHeight)];
+//    [labelQQZone setText:@"QQ空间"];
+//    [labelQQZone setTextAlignment:NSTextAlignmentCenter];
+//    [labelQQZone setFont:[UIFont systemFontOfSize:13]];
+//    [self addSubview:labelQQZone];
+//    
+//    //复制
+//    UIButton *buttonCopy=[[UIButton alloc]initWithFrame:CGRectMake(buttonWeiChatFriend.frame.origin.x+buttonWeiChatFriend.frame.size.width+logoSeq, labelWeiChat.frame.origin.y+labelWeiChat.frame.size.height+lineSpacing, logoWidth, logoHeight)];
+//    [buttonCopy setImage:[UIImage imageNamed:@"button_share_copy.png"] forState:UIControlStateNormal];
+//    buttonCopy.backgroundColor=[UIColor clearColor];
+//    [buttonCopy.imageView setContentMode:UIViewContentModeScaleAspectFit];
+//    [buttonCopy addTarget:self action:@selector(touchUpCopy:) forControlEvents:UIControlEventTouchUpInside];
+//    buttonCopy.tag=5;
+//    [self addSubview:buttonCopy];
+//    
+//    //复制文本
+//    UILabel *labelCopy=[[UILabel alloc]initWithFrame:CGRectMake(buttonCopy.frame.origin.x,
+//                                                                buttonCopy.frame.origin.y+ buttonCopy.frame.size.height +logoToLabelHeight,
+//                                                                buttonCopy.frame.size.width,
+//                                                                labelHeight)];
+//    [labelCopy setText:@"复制链接"];
+//    [labelCopy setTextAlignment:NSTextAlignmentCenter];
+//    [labelCopy setFont:[UIFont systemFontOfSize:13]];
+//    [self addSubview:labelCopy];
     
     //返回按钮(左下角)
     UIButton *buttonClose = [[UIButton alloc] init];
@@ -220,23 +218,6 @@ static ShareView *GlobalShareView;
     return YES;
 }
 
--(BOOL)checkIsInstallQQ{
-    if (![TencentOAuth iphoneQQInstalled])
-    {
-        [Tool showWarningTip:@"未安装QQ客户端" view:self time:1];
-        return NO;
-    }
-    return YES;
-}
-
--(BOOL)checkIsInstallQQZone{
-    if (![TencentOAuth iphoneQQInstalled])
-    {
-        [Tool showWarningTip:@"未安装QQ空间客户端" view:self time:1];
-        return NO;
-    }
-    return YES;
-}
 
 -(void)touchUpShareToWeiChat:(UIButton *)sender
 {
@@ -366,169 +347,6 @@ static ShareView *GlobalShareView;
     [self toucheUpClose];
 }
 
--(void)touchUpShareToQQ:(UIButton *)sender{
-    if(![self checkIsInstallQQ]){
-        return;
-    }
-    sender.enabled=NO;
-    currScence=QQScenceValue;
-    if(self.shareContentType==WeiChatShareContentTypeImage){
-        [self sendShareToQQOfImage:QQScenceValue];
-    }else{
-        [self sendShareToQQOfNew:QQScenceValue];
-    }
-    sender.enabled = YES;
-}
-
--(void)touchUpShareToQQZone:(UIButton *)sender{
-    if(![self checkIsInstallQQZone]){
-        return;
-    }
-    sender.enabled=NO;
-    currScence=QzoneScenceValue;
-    if(self.shareContentType==WeiChatShareContentTypeImage){
-        [self sendShareToQQOfImage:QzoneScenceValue];
-    }else{
-        [self sendShareToQQOfNew:QzoneScenceValue];
-    }
-    sender.enabled = YES;
-}
-
-//QQ图片分享
--(void)sendShareToQQOfImage:(int)scence
-{
-    self.shareDescription=[Tool clearSpaceAndNewline:self.shareDescription];
-    NSInteger textLength = [Tool convertToInt:self.shareDescription];
-    if(textLength>50){
-        self.shareDescription =[NSString stringWithFormat:@"%@...",[self.shareDescription substringToIndex:50]];
-    }
-    
-    NSString *qqShareTitle;
-    if(self.imageTitle&&self.imageTitle.length>0){
-        qqShareTitle = self.imageTitle;
-    }else{
-        qqShareTitle = shareImageToWeixinDefaultImageTitle;
-    }
-    NSData *imgData = UIImageJPEGRepresentation(self.shareImage,1.0);
-    QQApiNewsObject *newsObj = [QQApiNewsObject
-                                objectWithURL:[NSURL URLWithString:self.shareUrl]
-                                title: qqShareTitle
-                                description:nil
-                                previewImageData:imgData];
-
-    QQApiImageObject *imgObj = [QQApiImageObject objectWithData:imgData
-                                               previewImageData:imgData
-                                                          title:qqShareTitle
-                                                    description:self.shareDescription];
-    SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:imgObj];
-    QQApiSendResultCode sent;
-    if (scence == QQScenceValue) {
-        sent = [QQApiInterface sendReq:req];
-    }
-    else if (scence == QzoneScenceValue){
-        req = [SendMessageToQQReq reqWithContent:newsObj];
-        sent = [QQApiInterface SendReqToQZone:req];
-    }
-    [self autoCloseView];
-    [self handleSendResult:sent];
-}
-
-//QQ分享新闻
--(void)sendShareToQQOfNew:(int)scence
-{
-    self.shareDescription=[Tool clearSpaceAndNewline:self.shareDescription];
-    NSInteger textLength = [Tool convertToInt:self.shareDescription];
-    if(textLength>50){
-        self.shareDescription =[NSString stringWithFormat:@"%@...",[self.shareDescription substringToIndex:50]];
-    }
-    //判断是否分享包含图片
-    if(self.shareImgUrl.length>0)
-    {
-        QQApiNewsObject *newsObj = [QQApiNewsObject
-                                    objectWithURL:[NSURL URLWithString:self.shareUrl]
-                                    title: self.shareTitle.length>0?self.shareTitle:@" "
-                                    description:self.shareDescription.length>0?self.shareDescription:nil
-                                    previewImageURL:[NSURL URLWithString:self.shareImgUrl]];
-        //将内容分享到qq
-        SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newsObj];
-        QQApiSendResultCode sent;
-        if (scence == QQScenceValue)
-        {
-            sent = [QQApiInterface sendReq:req];
-        }
-        else if (scence == QzoneScenceValue){
-            sent = [QQApiInterface SendReqToQZone:req];
-        }
-        [self autoCloseView];
-        [self handleSendResult:sent];
-    }else
-    {
-        QQApiNewsObject *newsObj = [QQApiNewsObject
-                                    objectWithURL:[NSURL URLWithString:self.shareUrl]
-                                    title: self.shareTitle.length>0?self.shareTitle:@" "
-                                    description:self.shareDescription.length>0?self.shareDescription:nil
-                                    previewImageData:UIImagePNGRepresentation([UIImage imageNamed:@"image_share_weichat_defaut.png"])
-                                    ];
-        //将内容分享到qq
-        SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:newsObj];
-        QQApiSendResultCode sent;
-        if (scence == QQScenceValue) {
-            sent = [QQApiInterface sendReq:req];
-        }
-        else if (scence == QzoneScenceValue){
-            sent = [QQApiInterface SendReqToQZone:req];
-        }
-        [self autoCloseView];
-        [self handleSendResult:sent];
-    }
-}
-
-- (void)handleSendResult:(QQApiSendResultCode)sendResult
-{
-    switch (sendResult)
-    {
-        case EQQAPIAPPNOTREGISTED:
-        {
-            UIAlertView *msgbox = [[UIAlertView alloc] initWithTitle:@"Error" message:@"App未注册" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:nil];
-            [msgbox show];
-            break;
-        }
-        case EQQAPIMESSAGECONTENTINVALID:
-        case EQQAPIMESSAGECONTENTNULL:
-        case EQQAPIMESSAGETYPEINVALID:
-        {
-            UIAlertView *msgbox = [[UIAlertView alloc] initWithTitle:@"Error" message:@"发送参数错误" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:nil];
-            [msgbox show];
-            
-            break;
-        }
-        case EQQAPIQQNOTINSTALLED:
-        {
-            UIAlertView *msgbox = [[UIAlertView alloc] initWithTitle:@"Error" message:@"未安装手Q" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:nil];
-            [msgbox show];
-            
-            break;
-        }
-        case EQQAPIQQNOTSUPPORTAPI:
-        {
-            UIAlertView *msgbox = [[UIAlertView alloc] initWithTitle:@"Error" message:@"API接口不支持" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:nil];
-            [msgbox show];
-            
-            break;
-        }
-        case EQQAPISENDFAILD:
-        {
-            UIAlertView *msgbox = [[UIAlertView alloc] initWithTitle:@"Error" message:@"发送失败" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:nil];
-            [msgbox show];
-            
-            break;
-        }
-        default:
-        {
-            break;
-        }
-    }
-}
 
 -(UIImage *) changeImageSize:(UIImage *)image  scaleToSize:(CGSize)size
 {
@@ -583,7 +401,7 @@ static ShareView *GlobalShareView;
         [message  setThumbImage:image];
         
         WXWebpageObject *ext=[WXWebpageObject object];
-        ext.webpageUrl=@"http://www.baidu.com";
+        ext.webpageUrl=@"https://itunes.apple.com/cn/app/ju-ku/id1035193061?l=en&mt=8";
         message.mediaObject=ext;
         req.message=message;
         req.bText=NO;

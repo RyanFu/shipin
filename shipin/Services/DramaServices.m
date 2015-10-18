@@ -245,7 +245,7 @@ IMP_SINGLETON(DramaServices)
              NSMutableArray *dramaArray= [[NSMutableArray alloc] init];
             if(datum!=nil && [datum count]>0)
             {
-                NSLog(@"dramaCount=%d", [datum count]);
+//                NSLog(@"dramaCount=%lu", (unsigned long)[datum count]);
                 for (NSDictionary *drama in datum)
                 {
 

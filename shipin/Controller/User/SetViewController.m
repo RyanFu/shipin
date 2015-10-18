@@ -288,7 +288,7 @@
 //            }
             if (indexPath.row == 2)//去给应用评分
             {
-                [[UIApplication sharedApplication ] openURL:[NSURL URLWithString:@"http://www.baidu.com"]];
+                [[UIApplication sharedApplication ] openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/ju-ku/id1035193061?l=en&mt=8"]];
                 
             }
             if (indexPath.row == 3)//关于我们
@@ -318,21 +318,26 @@
     [self.view addSubview:_shareView];
     
 //    //设置分享的数据
-//    _shareView.shareUrl=[Tool getArticleDetailUrl:self._itemContent.url articleId:self._itemContent.actionId isClient:NO sourceName:self._itemContent.actionSource actionId:self._itemContent.actionId];
+    _shareView.shareUrl=@"https://itunes.apple.com/cn/app/ju-ku/id1035193061?l=en&mt=8";
     _shareView.shareTitle=@"剧库";
 //    _shareView.shareDescription=self._itemContent.summary;
-//    if(self._itemContent.imageList&&self._itemContent.imageList.count>0){
+//    if(self._itemContent.imageList&&self._itemContent.imageList.count>0)
+//    {
 //        ArticleImageInfo *articleImageInfo =self._itemContent.imageList[0];
 //        _shareView.shareImgUrl=articleImageInfo.imageUrl;
-//    }else if(self._itemContent.coverUrl&&self._itemContent.coverUrl.length>0){
+//    }
+//    else if(self._itemContent.coverUrl&&self._itemContent.coverUrl.length>0)
+//    {
 //        _shareView.shareImgUrl=self._itemContent.coverUrl;
-//    }else{
+//    }
+//    else
+//    {
 //        _shareView.shareImgUrl=@"";
 //    }
-//    
-//    _shareView.shareContentType=WeiChatShareContentTypeNews;
+    
+    _shareView.shareContentType=WeiChatShareContentTypeNews;
 //    _shareView.shareObjectId=self._itemContent.articleId;
-//    _shareView.shareObjectType=ShareContentTypeOfArticle;
+    _shareView.shareObjectType=ShareContentTypeOfArticle;
     
     [UIView animateWithDuration:0.2
                      animations:^{

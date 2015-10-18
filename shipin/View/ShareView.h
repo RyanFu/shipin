@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ShareDelegate.h"
-#import <TencentOpenAPI/TencentOAuth.h>
+
 typedef enum{
     WeiChatShareContentTypeNews,
     WeiChatShareContentTypeImage

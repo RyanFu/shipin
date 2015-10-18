@@ -49,6 +49,7 @@
     
     NSMutableArray      *_arrayTags;
 //    NSMutableArray      *_arrayTagsName;
+    NSString            *_strName;
     
 }
 

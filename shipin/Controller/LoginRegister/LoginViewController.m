@@ -126,6 +126,11 @@
 //获取验证码
 -(void) onButtonGetICode
 {
+    if([textTel.text length] <= 0 )
+    {
+        [Tool showWarningTip:@"请输入手机号" view:self.view time:1];
+        return;
+    }
     [self hideKeyborad];
     [Config saveUserName:textTel.text];
     
@@ -152,6 +157,7 @@
 
 -(void) Countdown60
 {
+    [btnGetICode setEnabled:NO];
     [btnGetICode setTitle:@"60秒后重发" forState:UIControlStateNormal];
     timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFireMethod:) userInfo:nil repeats:YES];
 }
@@ -178,6 +184,16 @@
 //登陆
 -(void)onButtonLogin
 {
+    if([textTel.text length] <= 0 )
+    {
+        [Tool showWarningTip:@"请输入手机号" view:self.view time:1];
+        return;
+    }
+    if([textIdentifyingCode.text length] <= 0 )
+    {
+        [Tool showWarningTip:@"请输入验证码" view:self.view time:1];
+        return;
+    }
     AFHTTPRequestOperationManager *httpManager = [AFHTTPRequestOperationManager manager];
     NSString *strUrl = [NSString stringWithFormat:@"%@?mobile=%@&smsCode=%@",URL_LOGIN,textTel.text,textIdentifyingCode.text];
     

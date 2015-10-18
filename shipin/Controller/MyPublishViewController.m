@@ -12,6 +12,7 @@
 #import "DramaDetialViewController.h"
 #import "LKDBHelper.h"
 #import "MyDrama.h"
+#import "EditPersonViewController.h"
 
 @interface MyPublishViewController ()
 
@@ -128,10 +129,33 @@
 //添加发布内容
 - (void)onButtonAddDrama
 {
-    AddPublishViewController *addPublishView = [[AddPublishViewController alloc ] init];
-    [self.navigationController pushViewController:addPublishView animated:YES];
-}
 
+    [UserService getUserDetail:0 success:^(UserModel *userModel)
+    {
+        if(![userModel.name isEqualToString:@"(null)"] && userModel.name!=nil){
+
+            AddPublishViewController *addPublishView = [[AddPublishViewController alloc ] init];
+            [self.navigationController pushViewController:addPublishView animated:YES];
+        } else{
+
+            [Tool showWarningTip:@"请补全用户信息" view:self.view time:1];
+            [self performSelector:@selector(onButtonEdit) withObject:nil afterDelay:1.0f];
+        }
+
+
+    } failure:^(NSDictionary *error)
+    {
+//        [FVCustomAlertView hideAlertFromView:self.view fading:YES];
+        [Tool showWarningTip:@"获取用户信息失败" view:self.view time:1];
+    }];
+
+}
+-(void) onButtonEdit
+{
+    EditPersonViewController *editPersonView = [[EditPersonViewController alloc ] init];
+    editPersonView._uId = 0;
+    [self.navigationController pushViewController:editPersonView animated:YES];
+}
 //返回
 - (void)onButtonBack
 {

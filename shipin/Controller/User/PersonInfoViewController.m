@@ -14,6 +14,7 @@
 #import "LKDBHelper.h"
 #import "CommentHeaderScrollTableView.h"
 #import "FVCustomAlertView.h"
+#import "Drama.h"
 
 @interface PersonInfoViewController (){
     UIColor *btnColor;
@@ -65,112 +66,121 @@
 {
 
     [self checkFollow:__uId];
-    if ([NetWorkState getNetWorkState] == NotReachable )
-    {
+    if ([NetWorkState getNetWorkState] == NotReachable ) {
         LKDBHelper *helper = [LKDBHelper getUsingLKDBHelper];
         NSString *where = [NSString stringWithFormat:@"id=%@", @(self._uId)];
-        UserModel *   userModel = [helper searchSingle:[UserModel class] where:where orderBy:nil];
-        
-        if(userModel!= nil && ![userModel.id isEqualToNumber:@([[Config getUserId] intValue])])
-        {
-            self.userModel =userModel;
-            if (self._uId == [[Config getUserId] intValue] )
+        UserModel *userModel = [helper searchSingle:[UserModel class] where:where orderBy:nil];
+
+        if (userModel != nil && ![userModel.id isEqualToNumber:@([[Config getUserId] intValue])]) {
+            self.userModel = userModel;
+            if (self._uId == [[Config getUserId] intValue])
                 _mobile = self.userModel.mobile;
             else
                 _mobile = @"***";
-            NSArray *arrLeft = [NSArray arrayWithObjects:@"个人简介",@"公司名称",@"公司职位",@"公司邮箱",@"联系电话", nil];
-            NSArray *arrRight = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%@",self.userModel.brief],
-                                 [NSString stringWithFormat:@"%@",self.userModel.corporation],
-                                 [NSString stringWithFormat:@"%@",self.userModel.position],
-                                 [NSString stringWithFormat:@"%@",self.userModel.email],
-                                 [NSString stringWithFormat:@"%@",_mobile], nil];//,self.userModel.mobile
-            
-            for(int i = 0 ; i < [arrLeft count]; i++)
-            {
-                TextModel * tModle = [[TextModel alloc ] init];
+            NSArray *arrLeft = [NSArray arrayWithObjects:@"个人简介", @"公司名称", @"公司职位", @"公司邮箱", @"联系电话", nil];
+            NSArray *arrRight = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%@", self.userModel.brief],
+                                                          [NSString stringWithFormat:@"%@", self.userModel.corporation],
+                                                          [NSString stringWithFormat:@"%@", self.userModel.position],
+                                                          [NSString stringWithFormat:@"%@", self.userModel.email],
+                                                          [NSString stringWithFormat:@"%@", _mobile], nil];//,self.userModel.mobile
+
+            for (int i = 0; i < [arrLeft count]; i++) {
+                TextModel *tModle = [[TextModel alloc] init];
                 tModle.strLeftName = [arrLeft objectAtIndex:i];
                 tModle.strRightName = [arrRight objectAtIndex:i];
                 [mutableArray addObject:tModle];
             }
         }
+    }
         else
         {
+
             [UserService getUserDetail:self._uId success:^(UserModel *userModel)
-             {
-                 self.userModel =userModel;
-                 if (self._uId == [[Config getUserId] intValue] )
-                     _mobile = self.userModel.mobile;
-                 else
-                     _mobile = @"***";
-                 NSArray *arrLeft = [NSArray arrayWithObjects:@"个人简介",@"公司名称",@"公司职位",@"公司邮箱",@"联系电话", nil];
-                 NSArray *arrRight = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%@",self.userModel.brief],
-                                      [NSString stringWithFormat:@"%@",self.userModel.corporation],
-                                      [NSString stringWithFormat:@"%@",self.userModel.position],
-                                      [NSString stringWithFormat:@"%@",self.userModel.email],
-                                      [NSString stringWithFormat:@"%@",_mobile], nil];
-                 
-                 for(int i = 0 ; i < [arrLeft count]; i++)
-                 {
-                     TextModel * tModle = [[TextModel alloc ] init];
-                     tModle.strLeftName = [arrLeft objectAtIndex:i];
-                     tModle.strRightName = [arrRight objectAtIndex:i];
-                     
-                     [mutableArray addObject:tModle];
-                 }
-                 
-             } failure:^(NSDictionary *error)
-             {
-                 [Tool showWarningTip:@"获取用户信息失败" view:self.view time:1];
-             }];
-            
-        }
-    }
-    else
-    {
-        [FVCustomAlertView showDefaultLoadingAlertOnView:self.view withTitle:nil withBlur:NO allowTap:YES];
-        [UserService getUserDetail:self._uId success:^(UserModel *userModel)
-         {
-             self.userModel =userModel;
-             if (self._uId == [[Config getUserId] intValue] )
-                 _mobile = self.userModel.mobile;
-             else
-                 _mobile = @"***";
-             NSArray *arrLeft = [NSArray arrayWithObjects:@"个人简介",@"公司名称",@"公司职位",@"公司邮箱",@"联系电话", nil];
-             NSArray *arrRight = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%@",self.userModel.brief],
-                                  [NSString stringWithFormat:@"%@",self.userModel.corporation],
-                                  [NSString stringWithFormat:@"%@",self.userModel.position],
-                                  [NSString stringWithFormat:@"%@",self.userModel.email],
-                                  [NSString stringWithFormat:@"%@",_mobile], nil];
-             
-             for(int i = 0 ; i < [arrLeft count]; i++)
-             {
-                 TextModel * tModle = [[TextModel alloc ] init];
-                 tModle.strLeftName = [arrLeft objectAtIndex:i];
-                 tModle.strRightName = [arrRight objectAtIndex:i];
-                 
-                 [mutableArray addObject:tModle];
-             }
-             
-             //获取我的发布信息
-             [UserService getPublishes:^(NSArray *dramaArray)
-              {
-                  _myDramaArray = [NSMutableArray arrayWithArray:dramaArray];
+            {
+                self.userModel =userModel;
+                if (self._uId == [[Config getUserId] intValue] )
+                    _mobile = self.userModel.mobile;
+                else
+                    _mobile = @"***";
+                NSArray *arrLeft = [NSArray arrayWithObjects:@"个人简介",@"公司名称",@"公司职位",@"公司邮箱",@"联系电话", nil];
+                NSArray *arrRight = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%@",self.userModel.brief],
+                                                              [NSString stringWithFormat:@"%@",self.userModel.corporation],
+                                                              [NSString stringWithFormat:@"%@",self.userModel.position],
+                                                              [NSString stringWithFormat:@"%@",self.userModel.email],
+                                                              [NSString stringWithFormat:@"%@",_mobile], nil];
+
+                for(int i = 0 ; i < [arrLeft count]; i++)
+                {
+                    TextModel * tModle = [[TextModel alloc ] init];
+                    tModle.strLeftName = [arrLeft objectAtIndex:i];
+                    tModle.strRightName = [arrRight objectAtIndex:i];
+
+                    [mutableArray addObject:tModle];
+                }
+
+                if(__uId==0 || __uId==[[Config getUserId] intValue]){
+
+                    //获取我的发布信息
+                    [UserService getPublishes:^(NSArray *dramaArray)
+                    {
+                        _myDramaArray = [NSMutableArray arrayWithArray:dramaArray];
 //                  [self initViewCtrl];
-                  [_tableView reloadData];
-                  
-                  [FVCustomAlertView hideAlertFromView:self.view fading:YES];
-              } failure:^(NSDictionary *error){
-                  [FVCustomAlertView hideAlertFromView:self.view fading:YES];
-              }];
-             
-         } failure:^(NSDictionary *error)
-         {
-             [FVCustomAlertView hideAlertFromView:self.view fading:YES];
-             [Tool showWarningTip:@"获取用户信息失败" view:self.view time:1];
-         }];
+                        [_tableView reloadData];
+
+                        [FVCustomAlertView hideAlertFromView:self.view fading:YES];
+                    } failure:^(NSDictionary *error){
+                        [FVCustomAlertView hideAlertFromView:self.view fading:YES];
+                    }];
+                } else{
+
+                    _myDramaArray = [self getOldData:@(__uId)];
+                    [_tableView reloadData];
+
+                    [FVCustomAlertView hideAlertFromView:self.view fading:YES];
+
+                }
+
+
+            } failure:^(NSDictionary *error)
+            {
+                [FVCustomAlertView hideAlertFromView:self.view fading:YES];
+                [Tool showWarningTip:@"获取用户信息失败" view:self.view time:1];
+            }];
+        }
+//    }
+//    else
+//    {
+//        [FVCustomAlertView showDefaultLoadingAlertOnView:self.view withTitle:nil withBlur:NO allowTap:YES];
+//    }
+
+
+}
+
+//获取本地数据
+-(NSMutableArray *)getOldData:(NSNumber *)uId{
+
+    LKDBHelper *helper = [LKDBHelper getUsingLKDBHelper];
+    NSString *orderBy = @"CAST(id as integer) desc";
+    NSString *where = [NSString stringWithFormat:@"uid=%@", uId];
+    NSMutableArray *dramaArray= [helper search:[Drama class] where:where orderBy:orderBy offset:0 count:10];
+
+    if([dramaArray count]>0){
+
+        NSMutableArray* array = [[NSMutableArray alloc] init];
+        for(Drama *drama in dramaArray){
+            NSError* err = nil;
+            DramaModel *dramaModel = [[DramaModel alloc] initWithString:drama.content error:&err];
+
+            if(err!=nil)
+            {
+                NSLog(@"getOldDatasERROR:::%@",err );
+            }
+            [array addObject:dramaModel];
+
+        }
+        return array;
     }
-
-
+    return [[NSMutableArray alloc] init];
 }
 
 -(void)checkFollow:(int)dId{
@@ -292,39 +302,49 @@
     }
     else if (indexPath.row == 8)
     {
-        cell.textLabel.text = @"发布的剧目";
-        [cell.textLabel setFont:[UIFont systemFontOfSize:12]];
-        [cell.textLabel setTextColor:RGB(153, 153, 153)];
-        return cell;
+        if([_myDramaArray count]!=0){
+//            cell.textLabel.text = @"";
+            cell.textLabel.text = @"发布的剧目";
+            [cell.textLabel setFont:[UIFont systemFontOfSize:12]];
+            [cell.textLabel setTextColor:RGB(153, 153, 153)];
+            return cell;
+        }
+
+
     }
     else if(indexPath.row == 9)
     {
-         NSMutableArray *array =[[NSMutableArray alloc ] initWithCapacity:0];
-        for (int i = 0; i < [_myDramaArray count]; i++ )
-        {
-            dramaModle =_myDramaArray[i];
-            SimilaritiesModel *similarities = [[SimilaritiesModel alloc ] init];
-            
-            similarities.sdid =dramaModle.id;
-            if([dramaModle.posters count] > 0 )
+        if([_myDramaArray count]!=0){
+
+            NSMutableArray *array =[[NSMutableArray alloc ] initWithCapacity:0];
+            for (int i = 0; i < [_myDramaArray count]; i++ )
             {
-                DramaPostersModel *imageItem = [[DramaPostersModel alloc ] init];
-                if ([dramaModle.posters count] >0)
-                    imageItem = dramaModle.posters[0];
-                similarities.cover =imageItem.poster;
+                dramaModle =_myDramaArray[i];
+                SimilaritiesModel *similarities = [[SimilaritiesModel alloc ] init];
+
+                similarities.sdid =dramaModle.id;
+                if([dramaModle.posters count] > 0 )
+                {
+                    DramaPostersModel *imageItem = [[DramaPostersModel alloc ] init];
+                    if ([dramaModle.posters count] >0)
+                        imageItem = dramaModle.posters[0];
+                    similarities.cover =imageItem.poster;
+                }
+
+                similarities.name =dramaModle.name;
+                [array addObject:similarities];
             }
 
-            similarities.name =dramaModle.name;
-            [array addObject:similarities];
+            UIView *userLogoList=[[CommentHeaderScrollTableView alloc]
+                    initWithFrame:CGRectMake(0, 20, SCREEN_WIDTH, 200)
+                       viewerList:array
+                       navigation:self.navigationController];
+            [cell addSubview:userLogoList];
+            return cell;
         }
-       
-        UIView *userLogoList=[[CommentHeaderScrollTableView alloc]
-                              initWithFrame:CGRectMake(0, 20, SCREEN_WIDTH, 200)
-                              viewerList:array
-                              navigation:self.navigationController];
-        [cell addSubview:userLogoList];
+
         
-        return cell;
+
     }
     else if (indexPath.row == 10)
     {

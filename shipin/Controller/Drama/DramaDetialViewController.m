@@ -44,10 +44,10 @@
     [self.view addSubview:btnBack];
 
     //分享
-//    UIButton *btnShare = [[UIButton alloc ] initWithFrame:CGRectMake(SCREEN_WIDTH-45, 20, 25, 25)];
-//    [btnShare setImage:[UIImage imageNamed:@"btn_share.png"] forState:UIControlStateNormal];
-//    [btnShare addTarget:self action:@selector(onButtonShare) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:btnShare];
+    UIButton *btnShare = [[UIButton alloc ] initWithFrame:CGRectMake(SCREEN_WIDTH-45, 20, 25, 25)];
+    [btnShare setImage:[UIImage imageNamed:@"btn_share.png"] forState:UIControlStateNormal];
+    [btnShare addTarget:self action:@selector(onButtonShare) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btnShare];
     
     _tableView = [[UITableView alloc ] initWithFrame:CGRectMake(0, TABBAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-TABBAR_HEIGHT) style:UITableViewStylePlain];
     _tableView.dataSource = self;
@@ -87,7 +87,47 @@
 
 -(void) onButtonShare
 {
+    if(!_shareView)
+    {
+        _shareView=[ShareView getShareInstance];
+        _shareView.backgroundColor = [UIColor clearColor];
+        _shareView.hidden=YES;
+        _shareView.alpha = 0;
+        _shareView.transform = CGAffineTransformMakeScale(1.2, 1.2);
+        
+    }
+    _shareView.shareDelegate=self;
+    [self.view addSubview:_shareView];
     
+    //    //设置分享的数据
+    _shareView.shareUrl=@"https://itunes.apple.com/cn/app/ju-ku/id1035193061?l=en&mt=8";
+    _shareView.shareTitle=@"剧库";
+    //    _shareView.shareDescription=self._itemContent.summary;
+    //    if(self._itemContent.imageList&&self._itemContent.imageList.count>0)
+    //    {
+    //        ArticleImageInfo *articleImageInfo =self._itemContent.imageList[0];
+    //        _shareView.shareImgUrl=articleImageInfo.imageUrl;
+    //    }
+    //    else if(self._itemContent.coverUrl&&self._itemContent.coverUrl.length>0)
+    //    {
+    //        _shareView.shareImgUrl=self._itemContent.coverUrl;
+    //    }
+    //    else
+    //    {
+    //        _shareView.shareImgUrl=@"";
+    //    }
+    
+    _shareView.shareContentType=WeiChatShareContentTypeNews;
+    //    _shareView.shareObjectId=self._itemContent.articleId;
+    _shareView.shareObjectType=ShareContentTypeOfArticle;
+    
+    [UIView animateWithDuration:0.2
+                     animations:^{
+                         _shareView.transform = CGAffineTransformMakeScale(1, 1);
+                         _shareView.hidden=NO;
+                         _shareView.alpha=1;
+                     }completion:^(BOOL finish){
+                     }];
 }
 
 -(void) onButtonBack
@@ -196,7 +236,7 @@
     }
     else if ( clickIndex == 2)
     {
-        return 2+[dramaModle.posters count ];
+        return 2+[dramaModle.dramaRelatives count ];
     }
     else
     return 0;
@@ -287,12 +327,12 @@
         }
         if( clickIndex == 2)//相关资料
         {
-            if ( [dramaModle.posters count] == indexPath.row - 1 )
-            {
-                UITableViewCell* cellBtn = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                cellBtn.selectionStyle = UITableViewCellSelectionStyleNone;
-                return cellBtn;
-            }
+//            if ( [dramaModle.posters count] == indexPath.row - 1 )
+//            {
+//                UITableViewCell* cellBtn = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//                cellBtn.selectionStyle = UITableViewCellSelectionStyleNone;
+//                return cellBtn;
+//            }
             
             DramaDetialTableViewCell* cell = [[DramaDetialTableViewCell alloc] initWithReuseIdentifier:CellIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -333,13 +373,13 @@
         }
         if( clickIndex == 2)//相关资料
         {
-            if ( [dramaModle.posters count] == indexPath.row - 3 )
-            {
-                UITableViewCell* cellBtn = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                cellBtn.selectionStyle = UITableViewCellSelectionStyleNone;
-                
-                return cellBtn;
-            }
+//            if ( [dramaModle.posters count] == indexPath.row - 3 )
+//            {
+//                UITableViewCell* cellBtn = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//                cellBtn.selectionStyle = UITableViewCellSelectionStyleNone;
+//
+//                return cellBtn;
+//            }
             DramaDetialTableViewCell* cell = [[DramaDetialTableViewCell alloc] initWithReuseIdentifier:CellIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             if ([dramaModle.dramaRelatives count] > indexPath.row - 2)
@@ -447,13 +487,13 @@
          }
         if( clickIndex == 2)//相关资料
         {
-            if ( [dramaModle.posters count] == indexPath.row - 3 )
-            {
-                UITableViewCell* cellBtn = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                cellBtn.selectionStyle = UITableViewCellSelectionStyleNone;
-                
-                return cellBtn;
-            }
+//            if ( [dramaModle.posters count] == indexPath.row - 3 )
+//            {
+//                UITableViewCell* cellBtn = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//                cellBtn.selectionStyle = UITableViewCellSelectionStyleNone;
+//
+//                return cellBtn;
+//            }
 
             DramaDetialTableViewCell* cell = [[DramaDetialTableViewCell alloc] initWithReuseIdentifier:CellIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;

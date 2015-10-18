@@ -17,6 +17,7 @@
     
     DramaModel *dramaLeft;
     DramaModel *dramaRight;
+
 }
 
 

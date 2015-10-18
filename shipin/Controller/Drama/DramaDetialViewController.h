@@ -13,8 +13,9 @@
 #import "DramaRelativesModel.h"
 #import "SimilaritiesModel.h"
 #import "JKPhotoBrowser.h"
+#import "ShareView.h"
 
-@interface DramaDetialViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
+@interface DramaDetialViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate,ShareDelegate>
 {
     NSMutableArray      *_arrayDramaDetial;
     UITableView         *_tableView;
@@ -25,6 +26,8 @@
     int                 clickIndex;
     
     DramaModel          *dramaModle;
+    ShareView           *_shareView;
+    
 }
 
 @property (nonatomic,assign) int   nId;

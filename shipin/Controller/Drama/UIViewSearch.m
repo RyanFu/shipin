@@ -25,12 +25,12 @@
         _strPlot= @"0";
         _strYear= @"0";
         
-        _strTypeName = @"全部";
-        _strCountryName = @"全部";
-        _strPlotName = @"全部";
-        _strYearName = @"全部";
+        _strTypeName = @"";
+        _strCountryName = @"";
+        _strPlotName = @"";
+        _strYearName = @"";
         
-        
+        _strName = @"";
         DramaTags *tag = [[DramaTags alloc] init];
         tag.id=0;
         tag.name=@"全部";
@@ -316,6 +316,28 @@
             Plot:(NSString *)plot plotName:(NSString *)PlotName
             Year:(NSString *)year yearName:(NSString *)YearName
 {
+//    NSMutableArray *arrName = [[NSMutableArray alloc ] init];
+//    [arrName removeAllObjects];
+//    if([OneName length]>0)
+//    {
+//        [arrName addObject:OneName];
+//    }
+//    if([CountryName length]>0)
+//    {
+//        [arrName addObject:CountryName];
+//    }
+//    if([PlotName length]>0)
+//    {
+//        [arrName addObject:PlotName];
+//    }
+//    if([YearName length]>0)
+//    {
+//        [arrName addObject:YearName];
+//    }
+//    for (int i = 0; i < [arrName count]; i++)
+//    {
+//        _strName = [_strName stringByAppendingString:arrName[i]];
+//    }
     [_searchBar setText:[NSString stringWithFormat:@"%@,%@,%@,%@",OneName,CountryName,PlotName,YearName]];
     
     _arrayTags = [[NSMutableArray alloc ] initWithObjects:one,country,plot,year,OneName,CountryName,PlotName,YearName, nil];
