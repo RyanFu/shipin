@@ -129,7 +129,18 @@
                      }completion:^(BOOL finish){
                      }];
 }
-
+-(void)touchUpCloseShare
+{
+    [_shareView removeFromSuperview];
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         _shareView.transform = CGAffineTransformMakeScale(1.3, 1.3);
+                         _shareView.alpha=0;
+                     }completion:^(BOOL finish){
+                         _shareView.hidden=YES;
+                     }];
+    
+}
 -(void) onButtonBack
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -406,11 +417,14 @@
                      NSURL *url =[Tool stringMerge:posterModle.poster];
                      [cell setIntroductionText:@"" headImage:url imageHeight:SCREEN_WIDTH-106];
                  }
-                 UILabel *labelImageCount = [[UILabel alloc ] initWithFrame:CGRectMake(20, 10, 50, 20)];
+                 UILabel *labelImageCount = [[UILabel alloc ] initWithFrame:CGRectMake(22, 10, 50, 20)];
                  [labelImageCount setText:[NSString stringWithFormat:@"共%ld张",(unsigned long)[dramaModle.posters count]]];
                  [labelImageCount setTextColor:[UIColor whiteColor]];
                  [labelImageCount setFont:[UIFont boldSystemFontOfSize:13]];
                  [labelImageCount setTextAlignment:NSTextAlignmentCenter];
+                 labelImageCount.layer.borderColor = [UIColor greenColor].CGColor;
+                 labelImageCount.layer.borderWidth = 2;
+                 labelImageCount.backgroundColor = [UIColor grayColor];
                  [cell addSubview:labelImageCount];
                 return cell;
              }

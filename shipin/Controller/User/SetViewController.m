@@ -129,6 +129,12 @@
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     
+                    UIButton *btnHead =[[UIButton alloc ] initWithFrame:CGRectMake(20, 60, 80, 80)];
+                    [btnHead  addTarget:self action:@selector(onButtonHead) forControlEvents:UIControlEventTouchUpInside];
+                    [btnHead setBackgroundColor:[UIColor clearColor]];
+                    [cell addSubview:btnHead];
+                    
+                    
                     //我的收藏
                     UIButton *btnCollection =[[UIButton alloc ] initWithFrame:CGRectMake(0, 170-14, SCREEN_WIDTH/2, 34)];
                     [btnCollection setTitle:@"           我的收藏" forState:UIControlStateNormal];
@@ -213,7 +219,12 @@
     [self.navigationController pushViewController:attentionPeoperView animated:YES];
 }
 
-
+-(void)onButtonHead
+{
+    PersonInfoViewController *personInfoView = [[PersonInfoViewController alloc ] init];
+    personInfoView._uId = [[Config getUserId] intValue];
+    [self.navigationController pushViewController:personInfoView animated:YES];
+}
 
 #pragma mark tableview
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -256,9 +267,9 @@
             //个人信息
             if (indexPath.row == 0)
             {
-                PersonInfoViewController *personInfoView = [[PersonInfoViewController alloc ] init];
-                personInfoView._uId = [[Config getUserId] intValue];
-                [self.navigationController pushViewController:personInfoView animated:YES];
+//                PersonInfoViewController *personInfoView = [[PersonInfoViewController alloc ] init];
+//                personInfoView._uId = [[Config getUserId] intValue];
+//                [self.navigationController pushViewController:personInfoView animated:YES];
             }
             if (indexPath.row == 1)//我的发布
             {

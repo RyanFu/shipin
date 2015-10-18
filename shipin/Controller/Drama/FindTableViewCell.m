@@ -28,14 +28,14 @@
         _labelTitle = [[UILabel alloc ] initWithFrame:CGRectMake(0,  _imageView.frame.size.height-45,SCREEN_WIDTH, 22.5f)];
         [_labelTitle setBackgroundColor:[UIColor clearColor] ];
 //        [_labelTitle setText:@"绝迹重生"];
-        [_labelTitle setFont:[UIFont systemFontOfSize:12]];
+        [_labelTitle setFont:BoldfontSize];
         [_labelTitle setTextColor:[UIColor whiteColor]];
         [_imageView addSubview:_labelTitle];
 
         _labelContent = [[UILabel alloc ] initWithFrame:CGRectMake(0, _imageView.frame.size.height-22.5f, SCREEN_WIDTH, 22.5f)];
         [_labelContent setBackgroundColor:[UIColor clearColor] ];
 //        [_labelContent setText:@"verferf"];
-        [_labelContent setFont:[UIFont systemFontOfSize:10]];
+        [_labelContent setFont:[UIFont systemFontOfSize:smallFontSize]];
         [_labelContent setTextColor:RGB(250, 250, 250) ];
         [_imageView addSubview:_labelContent];
         

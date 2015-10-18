@@ -401,9 +401,9 @@
 #pragma mark 加载好剧数据
 -(void) loadFindGoodDrama:(int )pageNumber
 {
-//    [FVCustomAlertView showDefaultLoadingAlertOnView:self.view withTitle:@"加载中..." withBlur:NO allowTap:YES];
+//    [FVCustomAlertView showDefaultLoadingAlertOnView:self.view withTitle:@"" withBlur:NO allowTap:YES];
 
-    [FVCustomAlertView showAlertOnView:self.view withTitle:@"加载中..." titleColor:[UIColor whiteColor] width:90.0 height:90.9 blur:YES backgroundImage:nil backgroundColor:[UIColor blackColor] cornerRadius:15.0 shadowAlpha:0.1 alpha:0.9 contentView:nil type:FVAlertTypeLoading allowTap:YES];
+//    [FVCustomAlertView showAlertOnView:self.view withTitle:@"加载中..." titleColor:[UIColor whiteColor] width:90.0 height:90.9 blur:YES backgroundImage:nil backgroundColor:[UIColor blackColor] cornerRadius:15.0 shadowAlpha:0.1 alpha:0.9 contentView:nil type:FVAlertTypeLoading allowTap:YES];
 
     if([ strBtnClick isEqualToString: @"btnAll"])
     {
@@ -416,7 +416,7 @@
                 self._arrayVideo = dramaArray;
                 [_findTableView reloadData];
             }
-            [FVCustomAlertView hideAlertFromView:self.view fading:YES];
+//            [FVCustomAlertView hideAlertFromView:self.view fading:YES];
         }
         else
         {
@@ -440,10 +440,10 @@
                          [_findTableView reloadData];
                      }
                  }
-                [FVCustomAlertView hideAlertFromView:self.view fading:YES];
+//                [FVCustomAlertView hideAlertFromView:self.view fading:YES];
              } failure:^(NSDictionary *error)
              {
-                 [FVCustomAlertView hideAlertFromView:self.view fading:YES];
+//                 [FVCustomAlertView hideAlertFromView:self.view fading:YES];
                  [Tool showWarningTip:@"请求数据失败" view:self.view time:2];
              }];
         }
@@ -459,7 +459,7 @@
                 self._arrayVideo = dramaArray;
                 [_findTableView reloadData];
             }
-            [FVCustomAlertView hideAlertFromView:self.view fading:YES];
+//            [FVCustomAlertView hideAlertFromView:self.view fading:YES];
         }
         else
         {
@@ -476,7 +476,7 @@
                  {
                      if (self._arrayNewVideo.count == 0)
                      {
-                         [Tool showWarningTip:@"没有更多数据!" view:self.view time:1];
+                         [Tool showWarningTip:@"没有更多数据!" view:self.view time:2];
                      }
                      if (self._arrayNewVideo.count != 0)
                      {
@@ -484,10 +484,10 @@
                          [_findTableView reloadData];
                      }
                  }
-                 [FVCustomAlertView hideAlertFromView:self.view fading:YES];
+//                 [FVCustomAlertView hideAlertFromView:self.view fading:YES];
              } failure:^(NSDictionary *error)
              {
-                 [FVCustomAlertView hideAlertFromView:self.view fading:YES];
+//                 [FVCustomAlertView hideAlertFromView:self.view fading:YES];
                  [Tool showWarningTip:@"请求数据失败" view:self.view time:2];
              }];
         }

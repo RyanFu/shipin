@@ -27,30 +27,30 @@
         [self addSubview:_imageViewUserHead];
         
         //发布人名字
-        UILabel *labelUser = [[UILabel alloc ] initWithFrame:CGRectMake(_imageViewUserHead.frame.origin.x+_imageViewUserHead.frame.size.width+10, _imageViewUserHead.frame.origin.y, 42, 20)];
+        UILabel *labelUser = [[UILabel alloc ] initWithFrame:CGRectMake(_imageViewUserHead.frame.origin.x+_imageViewUserHead.frame.size.width+10, _imageViewUserHead.frame.origin.y, 50, 20)];
         [labelUser setBackgroundColor:[UIColor clearColor] ];
-        [labelUser setFont:[UIFont systemFontOfSize:12] ];
+        [labelUser setFont:[UIFont systemFontOfSize:14] ];
         [labelUser setTextColor:RGB(153, 153, 153)];
         [labelUser setText:@"发布人:"];
         [self addSubview:labelUser];
         
         _labelUserName = [[UILabel alloc ] initWithFrame:CGRectMake(labelUser.frame.origin.x+labelUser.frame.size.width+10, _imageViewUserHead.frame.origin.y, 70, 20)];
         [_labelUserName setBackgroundColor:[UIColor clearColor] ];
-        [_labelUserName setFont:[UIFont systemFontOfSize:12] ];
+        [_labelUserName setFont:[UIFont systemFontOfSize:14] ];
         [_labelUserName setTextColor:yellowRgb];
         [_labelUserName setTextAlignment:NSTextAlignmentLeft];
         [self addSubview:_labelUserName];
         
         _labelReadCount = [[UILabel alloc ] initWithFrame:CGRectMake(SCREEN_WIDTH-55, _imageViewUserHead.frame.origin.y, 20, 20)];
         [_labelReadCount setBackgroundColor:[UIColor clearColor] ];
-        [_labelReadCount setFont:[UIFont systemFontOfSize:10] ];
+        [_labelReadCount setFont:[UIFont systemFontOfSize:12] ];
         [_labelReadCount setTextColor:yellowRgb];
         [_labelReadCount setTextAlignment:NSTextAlignmentRight];
         [self addSubview:_labelReadCount];
 
         UILabel *labelRead = [[UILabel alloc ] initWithFrame:CGRectMake(SCREEN_WIDTH-30, _imageViewUserHead.frame.origin.y, 30, 20)];
         [labelRead setBackgroundColor:[UIColor clearColor] ];
-        [labelRead setFont:[UIFont systemFontOfSize:10] ];
+        [labelRead setFont:[UIFont systemFontOfSize:12] ];
         [labelRead setTextColor:RGB(153, 153, 153)];
         [labelRead setTextAlignment:NSTextAlignmentLeft];
         [labelRead setText:@"阅读"];
@@ -60,7 +60,7 @@
         _labelRecommend = [[UILabel alloc] initWithFrame:CGRectMake(_imageViewUserHead.frame.origin.x,_imageViewUserHead.frame.origin.y+_imageViewUserHead.frame.size.height+5, SCREEN_WIDTH-20, 24)];
         [_labelRecommend setTextColor:RGB(153, 153, 153)];
         [_labelRecommend setBackgroundColor:[UIColor clearColor]];
-        [_labelRecommend setFont:[UIFont systemFontOfSize:10]];
+        [_labelRecommend setFont:[UIFont systemFontOfSize:12]];
         [_labelRecommend setTextAlignment:NSTextAlignmentLeft];
         _labelRecommend.numberOfLines = 0;
         [_labelRecommend setLineBreakMode:NSLineBreakByCharWrapping];

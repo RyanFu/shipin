@@ -199,7 +199,7 @@
                 if(userModel.toUid!=nil){
 
                     if([userModel.toUid intValue]==dId){
-                        btnText=@"已关注";
+                        btnText=@"取消关注";
                         btnColor= grayRgb;
                         break;
                     }
@@ -207,7 +207,7 @@
                 } else{
 
                     if([userModel.id intValue]==dId){
-                        btnText=@"已关注";
+                        btnText=@"取消关注";
                         btnColor= grayRgb;
                         break;
                     }
@@ -421,7 +421,7 @@
 
         if([btnText isEqualToString:@"关注"]){
 
-            btnText=@"已关注";
+            btnText=@"取消关注";
             btnColor= grayRgb;
         }else{
             btnText=@"关注";

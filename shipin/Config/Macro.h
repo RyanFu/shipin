@@ -30,7 +30,10 @@
 #define yellowRgb   RGB(239, 190, 0)
 //#define grayRgb   RGB(246, 246, 246)
 #define grayRgb   RGB(220, 220, 220)
-#define FontSize    12
+#define FontSize    14
+#define smallFontSize    12
+#define BoldfontSize  [UIFont boldSystemFontOfSize:14]
+
 //返回按钮宽高
 #define backButtonFram  CGRectMake(10, 25, 45, 22)
 #define netWorkUrl                      @"image_defaulthead.png"
