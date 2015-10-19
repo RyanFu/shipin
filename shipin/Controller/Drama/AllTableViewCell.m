@@ -51,7 +51,7 @@
          [_labelFilmContentLeft setUserInteractionEnabled:YES];
         [self addSubview:_labelFilmContentLeft];
         //阅读数量
-        _labelReadCountLeft= [[UILabel alloc ] initWithFrame:CGRectMake(45, labelbgLeft.frame.size.height+labelbgLeft.frame.origin.y+2, 15, 12)];
+        _labelReadCountLeft= [[UILabel alloc ] initWithFrame:CGRectMake(45, labelbgLeft.frame.size.height+labelbgLeft.frame.origin.y+2, 40, 12)];
         [_labelReadCountLeft setBackgroundColor:[UIColor clearColor]];
         [_labelReadCountLeft setTextColor:yellowRgb];
         [_labelReadCountLeft setFont:[UIFont systemFontOfSize:10]];
