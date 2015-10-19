@@ -100,9 +100,9 @@
     [self.view addSubview:_shareView];
     
     //    //设置分享的数据
-    _shareView.shareUrl=@"https://itunes.apple.com/cn/app/ju-ku/id1035193061?l=en&mt=8";
+    _shareView.shareUrl=@"http://182.92.102.39:9090/drama/detail?did=2";
     _shareView.shareTitle=@"剧库";
-    //    _shareView.shareDescription=self._itemContent.summary;
+        _shareView.shareDescription=dramaModle.name;
     //    if(self._itemContent.imageList&&self._itemContent.imageList.count>0)
     //    {
     //        ArticleImageInfo *articleImageInfo =self._itemContent.imageList[0];
@@ -113,9 +113,16 @@
     //        _shareView.shareImgUrl=self._itemContent.coverUrl;
     //    }
     //    else
-    //    {
-    //        _shareView.shareImgUrl=@"";
-    //    }
+    
+    if(dramaModle.posters.count>0){
+        
+        DramaPostersModel *posters =dramaModle.posters[0];
+        NSString *url =[[NSString stringWithFormat:@"%@",URL_SERVERURL] stringByAppendingString:posters.poster];
+         _shareView.shareImgUrl=url;
+    }
+    
+    
+    
     
     _shareView.shareContentType=WeiChatShareContentTypeNews;
     //    _shareView.shareObjectId=self._itemContent.articleId;
@@ -544,7 +551,7 @@
         }
         if( clickIndex == 1)
         {
-            return 292; //项目信息cell 高度
+            return 392; //项目信息cell 高度
         }
         if( clickIndex == 2)
         {

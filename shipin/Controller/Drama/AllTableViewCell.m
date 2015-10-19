@@ -213,7 +213,11 @@
     DramaPostersModel *posterModle;
     if ([leftData.posters count] > 0)
     {
-        posterModle =leftData.posters[0];
+        /**取第二张图片*/
+        if([leftData.posters count]>1)
+        posterModle =leftData.posters[1];
+        else
+            posterModle =leftData.posters[0];
         [_imageViewLeft sd_setImageWithURL:[Tool stringMerge:posterModle.poster] placeholderImage:DefaultImage];
         [_imageViewUserLeft sd_setImageWithURL:[Tool stringMerge:leftData.avatar] placeholderImage:[UIImage imageNamed:@"image_defaulthead.png"]];
         [_labelFilmNameLeft setText:leftData.name];
@@ -257,7 +261,11 @@
         //    右面数据
         if ([rightData.posters count] > 0)
         {
-            posterModle =rightData.posters[0];
+            /**取第二张图片*/
+            if([rightData.posters count]>1)
+                posterModle =rightData.posters[1];
+            else
+                posterModle =rightData.posters[0];
             [_imageViewRight sd_setImageWithURL:[Tool stringMerge:posterModle.poster] placeholderImage:DefaultImage];
             [_imageViewUserRight sd_setImageWithURL:[Tool stringMerge:rightData.avatar] placeholderImage:[UIImage imageNamed:@"image_defaulthead.png"]];
             [_labelFilmNameRight setText:rightData.name];

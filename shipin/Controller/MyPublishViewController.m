@@ -32,6 +32,7 @@
     _arrayPublish = [[NSMutableArray alloc ] initWithCapacity:0];
     
     [self initViewCtrl];
+     [self loadNetWorkData];
 }
 
 -(void) initViewCtrl
