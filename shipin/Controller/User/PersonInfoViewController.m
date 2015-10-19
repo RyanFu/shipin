@@ -66,7 +66,8 @@
 {
 
     [self checkFollow:__uId];
-    if ([NetWorkState getNetWorkState] == NotReachable ) {
+    if ([NetWorkState getNetWorkState] == NotReachable )
+    {
         LKDBHelper *helper = [LKDBHelper getUsingLKDBHelper];
         NSString *where = [NSString stringWithFormat:@"id=%@", @(self._uId)];
         UserModel *userModel = [helper searchSingle:[UserModel class] where:where orderBy:nil];
@@ -97,6 +98,7 @@
 
             [UserService getUserDetail:self._uId success:^(UserModel *userModel)
             {
+                [mutableArray removeAllObjects];
                 self.userModel =userModel;
                 if (self._uId == [[Config getUserId] intValue] )
                     _mobile = self.userModel.mobile;
@@ -118,42 +120,30 @@
                     [mutableArray addObject:tModle];
                 }
 
-                if(__uId==0 || __uId==[[Config getUserId] intValue]){
-
+                if(__uId==0 || __uId==[[Config getUserId] intValue])
+                {
                     //获取我的发布信息
                     [UserService getPublishes:^(NSArray *dramaArray)
                     {
                         _myDramaArray = [NSMutableArray arrayWithArray:dramaArray];
-//                  [self initViewCtrl];
                         [_tableView reloadData];
-
                         [FVCustomAlertView hideAlertFromView:self.view fading:YES];
                     } failure:^(NSDictionary *error){
                         [FVCustomAlertView hideAlertFromView:self.view fading:YES];
                     }];
-                } else{
-
+                }
+                else
+                {
                     _myDramaArray = [self getOldData:@(__uId)];
                     [_tableView reloadData];
-
                     [FVCustomAlertView hideAlertFromView:self.view fading:YES];
-
                 }
-
-
             } failure:^(NSDictionary *error)
             {
                 [FVCustomAlertView hideAlertFromView:self.view fading:YES];
                 [Tool showWarningTip:@"获取用户信息失败" view:self.view time:1];
             }];
         }
-//    }
-//    else
-//    {
-//        [FVCustomAlertView showDefaultLoadingAlertOnView:self.view withTitle:nil withBlur:NO allowTap:YES];
-//    }
-
-
 }
 
 //获取本地数据
