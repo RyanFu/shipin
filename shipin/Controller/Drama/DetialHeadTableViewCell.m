@@ -41,7 +41,7 @@
         [_labelUserName setTextAlignment:NSTextAlignmentLeft];
         [self addSubview:_labelUserName];
         
-        _labelReadCount = [[UILabel alloc ] initWithFrame:CGRectMake(SCREEN_WIDTH-55, _imageViewUserHead.frame.origin.y, 20, 20)];
+        _labelReadCount = [[UILabel alloc ] initWithFrame:CGRectMake(SCREEN_WIDTH-105, _imageViewUserHead.frame.origin.y, 70, 20)];
         [_labelReadCount setBackgroundColor:[UIColor clearColor] ];
         [_labelReadCount setFont:[UIFont systemFontOfSize:12] ];
         [_labelReadCount setTextColor:yellowRgb];
