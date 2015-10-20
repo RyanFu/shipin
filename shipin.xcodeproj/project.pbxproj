@@ -1160,7 +1160,7 @@
 				TargetAttributes = {
 					EE87D20B1B58ADA4002A0DD8 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = XXYYMF4EK3;
+						DevelopmentTeam = 93J5MD5G9C;
 					};
 					EE87D2241B58ADA4002A0DD8 = {
 						CreatedOnToolsVersion = 6.4;

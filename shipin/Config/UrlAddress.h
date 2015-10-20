@@ -9,6 +9,8 @@
 
 #define     URL_SERVERURL   @"http://www.17quannei.com/upfiles" //@"http://182.92.102.39"
 
+#define      URL_SERVER_H5  @"http://www.17quannei.com/drama"
+
 #define     URL_SERVERADDRESS   @"http://121.199.49.164" //  //@"http://182.92.102.39:8080"
 
 //#define     URL_SERVERURL   @"http://182.92.102.39" //@"http://182.92.102.39"

@@ -100,7 +100,7 @@
     [self.view addSubview:_shareView];
     
     //    //设置分享的数据
-    _shareView.shareUrl=@"http://182.92.102.39:9090/drama/detail?did=2";
+    _shareView.shareUrl=[NSString stringWithFormat:@"%@/detail?did=%@",URL_SERVER_H5,dramaModle.id];
     _shareView.shareTitle=@"剧库";
         _shareView.shareDescription=dramaModle.name;
     //    if(self._itemContent.imageList&&self._itemContent.imageList.count>0)
