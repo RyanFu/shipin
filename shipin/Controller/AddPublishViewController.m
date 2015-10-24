@@ -10,6 +10,8 @@
 #import "NetWorkState.h"
 #import "WifiViewController.h"
 #import "NoWifiViewController.h"
+#import "UIWebViewLoad.h"
+
 
 @interface AddPublishViewController ()
 
@@ -110,7 +112,9 @@
     //电脑发布
     if (indexPath.row == 0 )
     {
-        
+        UIWebViewLoad  *computerView = [[UIWebViewLoad alloc ] init];
+        computerView._url = URL_COMPUTERPUBLISH;
+        [self.navigationController pushViewController:computerView animated:YES];
     }
     //手机发布
     if (indexPath.row == 1 )

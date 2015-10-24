@@ -1169,10 +1169,11 @@
 				TargetAttributes = {
 					EE87D20B1B58ADA4002A0DD8 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 93J5MD5G9C;
+						DevelopmentTeam = XXYYMF4EK3;
 					};
 					EE87D2241B58ADA4002A0DD8 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = XXYYMF4EK3;
 						TestTargetID = EE87D20B1B58ADA4002A0DD8;
 					};
 				};
@@ -1569,6 +1570,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1580,6 +1583,7 @@
 				INFOPLIST_FILE = shipinTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/shipin.app/shipin";
 			};
 			name = Debug;
@@ -1588,6 +1592,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1595,6 +1601,7 @@
 				INFOPLIST_FILE = shipinTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/shipin.app/shipin";
 			};
 			name = Release;

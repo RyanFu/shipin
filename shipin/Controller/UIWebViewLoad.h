@@ -13,4 +13,6 @@
 
 @property (nonatomic ,strong) DramaRelativesModel *dramaRelativesModel;
 
+@property (nonatomic ,strong) NSString *_url;
+
 @end

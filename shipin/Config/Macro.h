@@ -52,3 +52,10 @@
 
 #define ShareToWeiboOfAccount       @"(来自@剧库官微)"
 #define shareImageToWeixinDefaultImageTitle @"剧库"
+#define URL_COMPUTERPUBLISH  @"http://www.baidu,com"
+
+
+
+
+
+

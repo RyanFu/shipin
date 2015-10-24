@@ -18,7 +18,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-  
+    [self.view setBackgroundColor:[UIColor whiteColor]];
+    
     [self initViewCtrl];
 }
 
@@ -32,13 +33,26 @@
     [btnBack addTarget:self action:@selector(onButtonBack) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btnBack];
     
-    UIWebView* webView = [[UIWebView alloc ] initWithFrame:CGRectMake(0, TABBAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-TABBAR_HEIGHT)];
-    webView.delegate = self;
-    [webView setBackgroundColor:[UIColor whiteColor] ];
-    [webView setScalesPageToFit:YES];
-    [self.view addSubview:webView];
+    if ([self._url length] > 0)
+    {
+        UITextField * textUrl = [[UITextField alloc ] initWithFrame:CGRectMake(10,  TABBAR_HEIGHT+20, SCREEN_WIDTH-20,50)];
+        [textUrl setText:self._url];
+        [textUrl setFont:[UIFont systemFontOfSize:14]];
+        textUrl.layer.borderColor = [UIColor grayColor].CGColor;
+        textUrl.layer.borderWidth = 1;
+        [self.view addSubview:textUrl];
+
+    }
+    else
+    {
+        UIWebView* webView = [[UIWebView alloc ] initWithFrame:CGRectMake(0, TABBAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-TABBAR_HEIGHT)];
+        webView.delegate = self;
+        [webView setBackgroundColor:[UIColor whiteColor] ];
+        [webView setScalesPageToFit:YES];
+        [self.view addSubview:webView];
+        [webView loadRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:self.dramaRelativesModel.url] ]];
+    }
     
-     [webView loadRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:self.dramaRelativesModel.url] ]];
 }
 
 
