@@ -200,6 +200,8 @@
         {
             TextModel * tModle = [[TextModel alloc ] init];
             tModle =  mutableArray[indexPath.row];
+            if([tModle.strRightName length] <= 0)
+                tModle.strRightName = @"尚未完善资料";
             [cell setLableText:tModle viewName:@"EditPersonViewController" cellHegith:40];
             return cell;
         }

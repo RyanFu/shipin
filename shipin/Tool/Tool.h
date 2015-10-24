@@ -30,4 +30,6 @@
 +(NSString*)clearSpaceAndNewline:(NSString*)oldStr;
 +(int)convertToInt:(NSString*)strtemp;
 
++(CGFloat) getTextHeight:(UILabel *)label;
+
 @end

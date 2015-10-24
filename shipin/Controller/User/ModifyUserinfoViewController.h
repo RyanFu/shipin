@@ -12,10 +12,10 @@
 @interface ModifyUserinfoViewController : BaseViewController
 {
     TextModel *curSelModle;
+    
+    UILabel     *_labelName;
 }
 @property (nonatomic ,strong) TextModel *selModle;
-//@property (nonatomic ,strong) NSString *_strSelItem;
-
 @property (nonatomic ,strong) UITextView *_textContent;
 
 @end

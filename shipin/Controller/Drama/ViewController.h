@@ -33,9 +33,10 @@
     UIViewSearch                *viewSearch;
     NSURL                       *_urlUser;
     UIButton                    *_btnLogin;
-    UILabel                     *_lableNewLine;
+    UIButton                    *_lableNewLine;
     
     NSMutableArray              *_arraySearch;
+    NSString                    *strTop;
 }
 
 @property (nonatomic,strong)    ExUINavigationBar       *_navigationBar;

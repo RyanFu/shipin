@@ -29,6 +29,7 @@
     _searchBar = [[UISearchBar alloc ] initWithFrame:CGRectMake(10, viewNav.frame.size.height-35, SCREEN_WIDTH-60, 30)];
     [_searchBar setPlaceholder:@"请输入剧名、导演或主演"];
     _searchBar.delegate = self;
+    _searchBar.clearsContextBeforeDrawing = NO;
     [self.view addSubview:_searchBar];
     
     [_searchBar setText:self._searchName];

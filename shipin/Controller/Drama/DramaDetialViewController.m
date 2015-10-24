@@ -260,6 +260,13 @@
     return 0;
 }
 
+-(void) onButtonToHead
+{
+    PersonInfoViewController *personInfoView = [[PersonInfoViewController alloc ] init];
+    personInfoView._uId = [[dramaModle.uid stringValue] intValue];
+    [self.navigationController pushViewController:personInfoView animated:YES];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"DetialHeadTableViewCell";
@@ -278,6 +285,12 @@
         DetialHeadTableViewCell* cell = [[DetialHeadTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
          cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell setCtrlText:dramaModle];
+        
+        UIButton *btnHead = [[UIButton alloc ] initWithFrame:CGRectMake(0, SCREEN_WIDTH-110, 40, 40)];
+        [btnHead setBackgroundColor:[UIColor clearColor]];
+        [btnHead addTarget:self action:@selector(onButtonToHead) forControlEvents:UIControlEventTouchUpInside];
+        [cell addSubview:btnHead];
+        
         return cell;
     }
     else if(indexPath.row == 1 )
@@ -345,13 +358,6 @@
         }
         if( clickIndex == 2)//相关资料
         {
-//            if ( [dramaModle.posters count] == indexPath.row - 1 )
-//            {
-//                UITableViewCell* cellBtn = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-//                cellBtn.selectionStyle = UITableViewCellSelectionStyleNone;
-//                return cellBtn;
-//            }
-            
             DramaDetialTableViewCell* cell = [[DramaDetialTableViewCell alloc] initWithReuseIdentifier:CellIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
@@ -391,13 +397,6 @@
         }
         if( clickIndex == 2)//相关资料
         {
-//            if ( [dramaModle.posters count] == indexPath.row - 3 )
-//            {
-//                UITableViewCell* cellBtn = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-//                cellBtn.selectionStyle = UITableViewCellSelectionStyleNone;
-//
-//                return cellBtn;
-//            }
             DramaDetialTableViewCell* cell = [[DramaDetialTableViewCell alloc] initWithReuseIdentifier:CellIdentifier];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             if ([dramaModle.dramaRelatives count] > indexPath.row - 2)
@@ -424,14 +423,17 @@
                      NSURL *url =[Tool stringMerge:posterModle.poster];
                      [cell setIntroductionText:@"" headImage:url imageHeight:SCREEN_WIDTH-106];
                  }
-                 UILabel *labelImageCount = [[UILabel alloc ] initWithFrame:CGRectMake(22, 10, 50, 20)];
-                 [labelImageCount setText:[NSString stringWithFormat:@"共%ld张",(unsigned long)[dramaModle.posters count]]];
+                 
+                 UIImageView *imageview = [[UIImageView alloc ] initWithFrame:CGRectMake(20, 0, 30, 30)];
+                 [imageview setImage:[UIImage imageNamed:@"image_red.png"]];
+                 [cell addSubview:imageview];
+                 
+                 UILabel *labelImageCount = [[UILabel alloc ] initWithFrame:CGRectMake(20, 0, 30, 20)];
+                 [labelImageCount setText:[NSString stringWithFormat:@" %ld",(unsigned long)[dramaModle.posters count]]];
                  [labelImageCount setTextColor:[UIColor whiteColor]];
+                 [labelImageCount setBackgroundColor:[UIColor clearColor] ];
                  [labelImageCount setFont:[UIFont boldSystemFontOfSize:13]];
-                 [labelImageCount setTextAlignment:NSTextAlignmentCenter];
-                 labelImageCount.layer.borderColor = [UIColor greenColor].CGColor;
-                 labelImageCount.layer.borderWidth = 2;
-                 labelImageCount.backgroundColor = [UIColor grayColor];
+                 [labelImageCount setTextAlignment:NSTextAlignmentLeft];
                  [cell addSubview:labelImageCount];
                 return cell;
              }
@@ -666,13 +668,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0)
-    {
-        PersonInfoViewController *personInfoView = [[PersonInfoViewController alloc ] init];
-        personInfoView._uId = [[dramaModle.uid stringValue] intValue];
-        [self.navigationController pushViewController:personInfoView animated:YES];
-        return;
-    }
+//    if (indexPath.row == 0)
+//    {
+//        PersonInfoViewController *personInfoView = [[PersonInfoViewController alloc ] init];
+//        personInfoView._uId = [[dramaModle.uid stringValue] intValue];
+//        [self.navigationController pushViewController:personInfoView animated:YES];
+//        return;
+//    }
     //链接地址
     if (indexPath.row >=2 && clickIndex == 2)
     {

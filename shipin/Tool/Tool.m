@@ -145,5 +145,16 @@
     
 }
 
++(CGFloat) getTextHeight:(UILabel *)label
+{
+    NSLog(@"%@",label.text);
+    
+    CGSize sizeToFit =[self boundingRectWithSize:label.text
+                                        textFont:[UIFont systemFontOfSize:13]
+                                        textSize:CGSizeMake(SCREEN_WIDTH-80, CGFLOAT_MAX)];
+    return sizeToFit.height;
+   
+}
+
 
 @end

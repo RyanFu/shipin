@@ -16,7 +16,7 @@
     UIButton        *btnGetICode;
     NSInteger       seconds;
     NSTimer         *timer;
-
+    NSString        *_strCode;
     
 }
 @end

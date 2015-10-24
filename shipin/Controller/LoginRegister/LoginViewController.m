@@ -131,6 +131,12 @@
         [Tool showWarningTip:@"请输入手机号" view:self.view time:1];
         return;
     }
+    if([textTel.text length] != 11 )
+    {
+        [Tool showWarningTip:@"请输入正确的手机号" view:self.view time:1];
+        return;
+    }
+    
     [self hideKeyborad];
     [Config saveUserName:textTel.text];
     
@@ -142,7 +148,7 @@
         NSDictionary *d = responseObject;
         if([[d objectForKey:@"code"] integerValue]== 0 )
         {
-//            textIdentifyingCode.text = [d objectForKey:@"data"] ;
+            _strCode = [d objectForKey:@"data"] ;
             [self Countdown60];
         }
         else
@@ -189,9 +195,19 @@
         [Tool showWarningTip:@"请输入手机号" view:self.view time:1];
         return;
     }
+    if([textTel.text length] != 11 )
+    {
+        [Tool showWarningTip:@"请输入正确的手机号" view:self.view time:1];
+        return;
+    }
     if([textIdentifyingCode.text length] <= 0 )
     {
         [Tool showWarningTip:@"请输入验证码" view:self.view time:1];
+        return;
+    }
+    if (![_strCode isEqualToString:textIdentifyingCode.text] )
+    {
+        [Tool showWarningTip:@"验证码错误" view:self.view time:1];
         return;
     }
     AFHTTPRequestOperationManager *httpManager = [AFHTTPRequestOperationManager manager];

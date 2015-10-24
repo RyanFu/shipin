@@ -115,7 +115,16 @@
                 {
                     TextModel * tModle = [[TextModel alloc ] init];
                     tModle.strLeftName = [arrLeft objectAtIndex:i];
-                    tModle.strRightName = [arrRight objectAtIndex:i];
+                   
+                    if([[arrRight objectAtIndex:i] length] <= 0 || [[arrRight objectAtIndex:i]  isEqualToString:@"(null)"])
+                    {
+                        tModle.strRightName = @"尚未完善资料";
+                    }
+                    else
+                    {
+                        tModle.strRightName = [arrRight objectAtIndex:i];
+                    }
+                    
 
                     [mutableArray addObject:tModle];
                 }

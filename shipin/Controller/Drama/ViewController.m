@@ -46,7 +46,7 @@
     strBtnClick = @"btnGood";
     bIsColl = FALSE;
     _currentPage = 1;
-
+    
     [self initViewCtrl];
     [self createSpreadOutButton];
     //加载视频数据1代表最新
@@ -164,6 +164,34 @@
     [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:_findTableView];
 }
 
+-(void)onButtonTop
+{
+    strTop =@"YES";
+    if([strBtnClick isEqualToString: @"btnAll" ])
+    {
+        [UIView animateWithDuration:.3f animations:^{
+//            btnGood.alpha=1;
+//            btnAll.alpha=1;
+            _findTableView.frame = CGRectMake(0, TABBAR_HEIGHT+80, SCREEN_WIDTH, SCREEN_HEIGHT-TABBAR_HEIGHT-80);
+            [_findTableView  setContentOffset:CGPointMake(0, 0) animated:YES];
+//            _lableNewLine.frame = CGRectMake(0, TABBAR_HEIGHT+40, SCREEN_WIDTH, 40);
+//            btnSpreadOut.frame = CGRectMake(SCREEN_WIDTH-50, TABBAR_HEIGHT+40, 40, 30);
+            _lableNewLine.alpha=1;
+            btnSpreadOut.alpha=1;
+        }];
+    }
+    else
+    {
+        [UIView animateWithDuration:.3f animations:^{
+            btnGood.alpha=1;
+            btnAll.alpha=1;
+            _findTableView.frame = CGRectMake(0, TABBAR_HEIGHT+40, SCREEN_WIDTH, SCREEN_HEIGHT-TABBAR_HEIGHT-40);
+            [_findTableView  setContentOffset:CGPointMake(0, 0) animated:YES];
+        }];
+    }
+   
+}
+
 #pragma mark 上下滑动
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -174,55 +202,59 @@
 //        NSLog(@"=====滑动到底了");
 //    }
 //    
-//    if (_findTableView.contentOffset.y == 0)
-//    {
-//        NSLog(@"=====滑动到顶了");
-//    }
-    if([strBtnClick isEqualToString: @"btnAll" ])
+    if (_findTableView.contentOffset.y == 0)
     {
-        if(scrollView.contentOffset.y < 0)
-        {
-            [UIView animateWithDuration:.3f animations:^{
-                btnGood.alpha=1;
-                btnAll.alpha=1;
-                _findTableView.frame = CGRectMake(0, btnGood.frame.origin.y+btnGood.frame.size.height+40, SCREEN_WIDTH, SCREEN_HEIGHT-TABBAR_HEIGHT-80);
-                _lableNewLine.frame = CGRectMake(0, btnGood.frame.size.height+btnGood.frame.origin.y, SCREEN_WIDTH, 40);
-                btnSpreadOut.frame = CGRectMake(SCREEN_WIDTH-50, btnGood.frame.size.height+btnGood.frame.origin.y, 40, 30);
-            }];
-        }
-        else if(scrollView.contentOffset.y > 0)
-        {
-            [UIView animateWithDuration:.3f animations:^{
-                btnGood.alpha=0;
-                btnAll.alpha=0;
-               _findTableView.frame = CGRectMake(0, btnGood.frame.origin.y+btnGood.frame.size.height, SCREEN_WIDTH, SCREEN_HEIGHT-TABBAR_HEIGHT-40);
-                _lableNewLine.frame = CGRectMake(0, TABBAR_HEIGHT, SCREEN_WIDTH, 40);
-                btnSpreadOut.frame = CGRectMake(SCREEN_WIDTH-50, TABBAR_HEIGHT, 40, 30);
-            }];
-        }
-
+        NSLog(@"=====滑动到顶了");
+        strTop =@"NO";
     }
-    else
+    if (![strTop isEqualToString:@"YES"])
     {
-        if(scrollView.contentOffset.y < 0)
+        if([strBtnClick isEqualToString: @"btnAll" ])
         {
-            [UIView animateWithDuration:.3f animations:^{
-                btnGood.alpha=1;
-                btnAll.alpha=1;
-                _findTableView.frame = CGRectMake(0, btnGood.frame.origin.y+btnGood.frame.size.height, SCREEN_WIDTH, SCREEN_HEIGHT-TABBAR_HEIGHT-40);
-            }];
+            if(scrollView.contentOffset.y < 0)
+            {
+                [UIView animateWithDuration:.3f animations:^{
+//                    btnGood.alpha=1;
+//                    btnAll.alpha=1;
+                    _findTableView.frame = CGRectMake(0, btnGood.frame.origin.y+btnGood.frame.size.height+40, SCREEN_WIDTH, SCREEN_HEIGHT-TABBAR_HEIGHT-80);
+                    _lableNewLine.alpha=1;
+                    btnSpreadOut.alpha=1;
+                }];
+            }
+            else if(scrollView.contentOffset.y > 0)
+            {
+                [UIView animateWithDuration:.3f animations:^{
+//                    btnGood.alpha=0;
+//                    btnAll.alpha=0;
+                    _findTableView.frame = CGRectMake(0, btnGood.frame.origin.y+btnGood.frame.size.height, SCREEN_WIDTH, SCREEN_HEIGHT-TABBAR_HEIGHT-40);
+                    _lableNewLine.alpha=0;
+                    btnSpreadOut.alpha=0;
+                }];
+            }
+            
         }
-        else if(scrollView.contentOffset.y > 0)
+        else
         {
-            [UIView animateWithDuration:.3f animations:^{
-                btnGood.alpha=0;
-                btnAll.alpha=0;
-                _findTableView.frame = CGRectMake(0, TABBAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-TABBAR_HEIGHT);
-            }];
+            if(scrollView.contentOffset.y < 0)
+            {
+                [UIView animateWithDuration:.3f animations:^{
+                    btnGood.alpha=1;
+                    btnAll.alpha=1;
+                    _findTableView.frame = CGRectMake(0, btnGood.frame.origin.y+btnGood.frame.size.height, SCREEN_WIDTH, SCREEN_HEIGHT-TABBAR_HEIGHT-40);
+                }];
+            }
+            else if(scrollView.contentOffset.y > 0)
+            {
+                [UIView animateWithDuration:.3f animations:^{
+                    btnGood.alpha=0;
+                    btnAll.alpha=0;
+                    _findTableView.frame = CGRectMake(0, TABBAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-TABBAR_HEIGHT);
+                }];
+            }
+            
         }
-
+        [_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
     }
-    [_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
@@ -323,18 +355,26 @@
     }
     [_refreshHeaderView refreshLastUpdatedDate];
     
+    
+    UIButton *btnTop = [[UIButton alloc ] initWithFrame:CGRectMake(SCREEN_WIDTH-60, SCREEN_HEIGHT-60, 50, 50)];
+    [btnTop setImage:[UIImage imageNamed:@"btn_home.png"] forState:UIControlStateNormal];
+    [btnTop setImage:[UIImage imageNamed:@"btn_home_selected.png"] forState:UIControlStateHighlighted];
+    [btnTop addTarget:self action:@selector(onButtonTop) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btnTop];
 }
+
 
 
 #pragma mark  创建展开收起按钮
 -(void) createSpreadOutButton
 {
-    _lableNewLine = [[UILabel alloc ] initWithFrame:CGRectMake(0, btnGood.frame.size.height+btnGood.frame.origin.y, SCREEN_WIDTH, 40)];
-    [_lableNewLine setText:@"搜索更多"];
+    _lableNewLine = [[UIButton alloc ] initWithFrame:CGRectMake(0, btnGood.frame.size.height+btnGood.frame.origin.y, SCREEN_WIDTH, 40)];
+    [_lableNewLine setTitle:@"搜索更多" forState:UIControlStateNormal];
     [_lableNewLine setBackgroundColor:[UIColor clearColor]];
-    [_lableNewLine setFont:[UIFont systemFontOfSize:14]];
-    [_lableNewLine setTextAlignment:NSTextAlignmentCenter];
-    [_lableNewLine setTextColor:RGB(153, 153, 153)];
+    _lableNewLine.titleLabel.font =  [UIFont systemFontOfSize:14];
+//    [_lableNewLine setTextAlignment:NSTextAlignmentCenter];
+    [_lableNewLine setTitleColor:RGB(153, 153, 153) forState:UIControlStateNormal];
+    [_lableNewLine addTarget:self action:@selector(onButtonSpreadOut) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_lableNewLine];
     [_lableNewLine setHidden:YES];
     
@@ -371,7 +411,7 @@
 //剧目类型选择
 -(void) onButtonSelect:(UIButton*) sender
 {
-    //发现好剧
+    //热剧
     if ( sender.tag == 100 )
     {
         [_lableNewLine setHidden:YES];
@@ -385,9 +425,11 @@
         //加载发现好剧数据
         [self loadFindGoodDrama:1];
     }
-    //全部剧目
+    //发现
     if ( sender.tag == 101 )
     {
+        _lableNewLine.alpha=1;
+        btnSpreadOut.alpha=1;
         [_lableNewLine setHidden:NO];
          _findTableView.frame = CGRectMake(0, btnGood.frame.origin.y+btnGood.frame.size.height+40, SCREEN_WIDTH, SCREEN_HEIGHT-TABBAR_HEIGHT-80);
         strBtnClick = @"btnAll";

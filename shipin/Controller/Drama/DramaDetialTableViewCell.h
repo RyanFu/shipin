@@ -17,9 +17,6 @@
     UILabel     *_labelDir;
     UILabel     *_labelDirectorName;
 
-    UILabel     *_labelScenarist;
-    UILabel     *_labelScenaristName;
-
     UILabel     *_labelProducer;
     UILabel     *_labelProducerName;
 

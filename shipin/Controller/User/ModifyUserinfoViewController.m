@@ -28,16 +28,22 @@
     [btnBack setImage:[UIImage imageNamed:@"btn_back.png"] forState:UIControlStateNormal];
     [btnBack addTarget:self action:@selector(onButtonBack) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btnBack];
-
     
-    self._textContent = [[UITextView alloc ] initWithFrame:CGRectMake(20, TABBAR_HEIGHT+20, SCREEN_WIDTH-40, 30)];
+    _labelName = [[UILabel alloc ] initWithFrame:CGRectMake(0, TABBAR_HEIGHT+20, 75, 30)];
+    [_labelName setBackgroundColor:[UIColor clearColor]];
+    [_labelName setFont:[UIFont systemFontOfSize:14]];
+    [_labelName setTextAlignment:NSTextAlignmentRight];
+    [self.view addSubview:_labelName];
+    [_labelName setText:[NSString stringWithFormat:@"%@:",self.selModle.strLeftName]];
+    
+    self._textContent = [[UITextView alloc ] initWithFrame:CGRectMake(80, TABBAR_HEIGHT+20, SCREEN_WIDTH-100, 30)];
     self._textContent.layer.masksToBounds = YES;
     self._textContent.layer.cornerRadius = 3;
     [self._textContent setBackgroundColor:[UIColor whiteColor] ];
     [ self._textContent setFont:[UIFont systemFontOfSize:14]];
     [self.view addSubview:self._textContent];
     if([self.selModle.strLeftName isEqualToString:@"个人简介"])
-         self._textContent.frame = CGRectMake(20, TABBAR_HEIGHT+20, SCREEN_WIDTH-40, 100);
+         self._textContent.frame = CGRectMake(20, TABBAR_HEIGHT+50, SCREEN_WIDTH-40, 100);
     
     UIButton *btnSave = [[UIButton alloc ] initWithFrame:CGRectMake(20, self._textContent.frame.size.height+self._textContent.frame.origin.y+30, SCREEN_WIDTH-40, 40)];
     [btnSave setTitle:@"修改" forState:UIControlStateNormal];
@@ -51,7 +57,10 @@
 
 -(void) viewDidAppear:(BOOL)animated
 {
-    self._textContent.text = [Tool isNull:self.selModle.strRightName] ;
+     if(![self.selModle.strRightName  isEqualToString:@"尚未完善资料"])
+     {
+         self._textContent.text = [Tool isNull:self.selModle.strRightName] ;
+     }
 }
 
 
@@ -75,7 +84,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 
 }
-
 
 -(void) onButtonBack
 {

@@ -55,19 +55,6 @@
     [_labelDirectorName setTextColor:RGB(102, 102, 102)];
     [self addSubview:_labelDirectorName];
     
-//    编剧
-//    _labelScenarist = [[UILabel alloc ] initWithFrame:CGRectZero];
-//    [_labelScenarist setText:@"编剧:"];
-//    [_labelScenarist setBackgroundColor:[UIColor clearColor]];
-//    [_labelScenarist setFont:[UIFont boldSystemFontOfSize:13]];
-//    [self addSubview:_labelScenarist];
-//
-//    _labelScenaristName = [[UILabel alloc ] initWithFrame:CGRectZero];
-//    [_labelScenaristName setBackgroundColor:[UIColor clearColor]];
-//    [_labelScenaristName setFont:[UIFont systemFontOfSize:13]];
-//    [_labelScenaristName setTextColor:RGB(102, 102, 102)];
-//    [self addSubview:_labelScenaristName];
-
     //制片
     _labelProducer = [[UILabel alloc ] initWithFrame:CGRectZero];
     [_labelProducer setText:@"制片:"];
@@ -242,8 +229,6 @@
     
     [_labelDirectorName setText:dramaModel.director];
     
-    //    [_labelScenaristName setText:dramaModel.];
-    
     [_labelProducerName setText:dramaModel.distribution];
     
     [_labelZyName setText:dramaModel.staring];
@@ -260,36 +245,32 @@
     
     [_labelSqDateName setText:dramaModel.wrap];
 //    设置坐标
-    _labelDir.frame  = CGRectMake(20, 20, 40, [self getTextHeight:_labelZyName]);
-    _labelDirectorName.frame  = CGRectMake(60, 20, SCREEN_WIDTH-40, [self getTextHeight:_labelZyName]);
+    _labelDir.frame  = CGRectMake(20, 20, 40, [Tool getTextHeight:_labelDir]);
+    _labelDirectorName.frame  = CGRectMake(60, 20, SCREEN_WIDTH-80, [Tool getTextHeight:_labelDirectorName]);
     
-    //_labelScenarist.frame  = CGRectMake(20, _labelDir.frame.origin.y+_labelDir.frame.size.height+10, 30, 18);
-   // _labelScenaristName.frame  = CGRectMake(60, _labelDir.frame.origin.y+_labelDir.frame.size.height+10, SCREEN_WIDTH, 18);
+    _labelProducer.frame  = CGRectMake(20, _labelDirectorName.frame.origin.y+_labelDirectorName.frame.size.height+10, 60, [Tool getTextHeight:_labelDirectorName]);
+    _labelProducerName.frame  = CGRectMake(60, _labelDirectorName.frame.origin.y+_labelDirectorName.frame.size.height+10, SCREEN_WIDTH-80, [Tool getTextHeight:_labelDirectorName]);
     
-    _labelProducer.frame  = CGRectMake(20, _labelDirectorName.frame.origin.y+_labelDirectorName.frame.size.height+10, 60, [self getTextHeight:_labelZyName]);
-    _labelProducerName.frame  = CGRectMake(60, _labelDirectorName.frame.origin.y+_labelDirectorName.frame.size.height+10, SCREEN_WIDTH-80, [self getTextHeight:_labelZyName]);
+    _labelZy.frame  = CGRectMake(20, _labelProducerName.frame.origin.y+_labelProducerName.frame.size.height+10, 60, [Tool getTextHeight:_labelZyName]);
+    _labelZyName.frame  = CGRectMake(60, _labelProducerName.frame.origin.y+_labelProducerName.frame.size.height+10, SCREEN_WIDTH-80, [Tool getTextHeight:_labelZyName]);
     
-    _labelZy.frame  = CGRectMake(20, _labelProducerName.frame.origin.y+_labelProducerName.frame.size.height+10, 60, [self getTextHeight:_labelZyName]);
+    _labelPlace.frame  = CGRectMake(20, _labelZyName.frame.origin.y+_labelZyName.frame.size.height+10, 60, [Tool getTextHeight:_labelPlace]);
+    _labelPlaceName.frame  = CGRectMake(60, _labelZyName.frame.origin.y+_labelZyName.frame.size.height+10, SCREEN_WIDTH-80, [Tool getTextHeight:_labelPlaceName]);
+    
+    _labelCount.frame  = CGRectMake(20, _labelPlaceName.frame.origin.y+_labelPlaceName.frame.size.height+10, 60, [Tool getTextHeight:_labelPlaceName]);
+    _labelCountName.frame  = CGRectMake(60, _labelPlaceName.frame.origin.y+_labelPlaceName.frame.size.height+10, SCREEN_WIDTH-80, [Tool getTextHeight:_labelPlaceName]);
    
-    _labelZyName.frame  = CGRectMake(60, _labelProducerName.frame.origin.y+_labelProducerName.frame.size.height+10, SCREEN_WIDTH-80, [self getTextHeight:_labelZyName]);
-    
-    _labelPlace.frame  = CGRectMake(20, _labelZyName.frame.origin.y+_labelZyName.frame.size.height+10, 60, [self getTextHeight:_labelZyName]);
-    _labelPlaceName.frame  = CGRectMake(60, _labelZyName.frame.origin.y+_labelZyName.frame.size.height+10, SCREEN_WIDTH-80, [self getTextHeight:_labelZyName]);
-    
-    _labelCount.frame  = CGRectMake(20, _labelPlaceName.frame.origin.y+_labelPlaceName.frame.size.height+10, 60, [self getTextHeight:_labelZyName]);
-    _labelCountName.frame  = CGRectMake(60, _labelPlaceName.frame.origin.y+_labelPlaceName.frame.size.height+10, SCREEN_WIDTH-80, [self getTextHeight:_labelZyName]);
+    _labelProduced.frame  = CGRectMake(20, _labelCountName.frame.origin.y+_labelCountName.frame.size.height+10, 60, [Tool getTextHeight:_labelCountName]);
+    _labelProducedName.frame  = CGRectMake(85, _labelCountName.frame.origin.y+_labelCountName.frame.size.height+10, SCREEN_WIDTH-80, [Tool getTextHeight:_labelCountName]);
    
-    _labelProduced.frame  = CGRectMake(20, _labelCountName.frame.origin.y+_labelCountName.frame.size.height+10, 60, [self getTextHeight:_labelZyName]);
-    _labelProducedName.frame  = CGRectMake(85, _labelCountName.frame.origin.y+_labelCountName.frame.size.height+10, SCREEN_WIDTH-105, [self getTextHeight:_labelZyName]);
+    _labelZpdw.frame  = CGRectMake(20, _labelProducedName.frame.origin.y+_labelProducedName.frame.size.height+10, 60, [Tool getTextHeight:_labelProducedName]);
+    _labelZpdwName.frame  = CGRectMake(85, _labelProducedName.frame.origin.y+_labelProducedName.frame.size.height+10, SCREEN_WIDTH-80, [Tool getTextHeight:_labelProducedName]);
    
-    _labelZpdw.frame  = CGRectMake(20, _labelProducedName.frame.origin.y+_labelProducedName.frame.size.height+10, 60, [self getTextHeight:_labelZyName]);
-    _labelZpdwName.frame  = CGRectMake(85, _labelProducedName.frame.origin.y+_labelProducedName.frame.size.height+10, SCREEN_WIDTH-105, [self getTextHeight:_labelZyName]);
-   
-    _labelKjDate.frame  = CGRectMake(20, _labelZpdwName.frame.origin.y+_labelZpdwName.frame.size.height+10, 60, [self getTextHeight:_labelZyName]);
-    _labelKjDateName.frame  = CGRectMake(85, _labelZpdwName.frame.origin.y+_labelZpdwName.frame.size.height+10, SCREEN_WIDTH-80, [self getTextHeight:_labelZyName]);
+    _labelKjDate.frame  = CGRectMake(20, _labelZpdwName.frame.origin.y+_labelZpdwName.frame.size.height+10, 60, [Tool getTextHeight:_labelZpdwName]);
+    _labelKjDateName.frame  = CGRectMake(85, _labelZpdwName.frame.origin.y+_labelZpdwName.frame.size.height+10, SCREEN_WIDTH-80, [Tool getTextHeight:_labelZpdwName]);
     
-    _labelSqDate.frame  = CGRectMake(20, _labelKjDateName.frame.origin.y+_labelKjDateName.frame.size.height+10, 60, [self getTextHeight:_labelZyName]);
-    _labelSqDateName.frame  = CGRectMake(85, _labelKjDateName.frame.origin.y+_labelKjDateName.frame.size.height+10, SCREEN_WIDTH-80, [self getTextHeight:_labelZyName]);
+    _labelSqDate.frame  = CGRectMake(20, _labelKjDateName.frame.origin.y+_labelKjDateName.frame.size.height+10, 60, [Tool getTextHeight:_labelKjDateName]);
+    _labelSqDateName.frame  = CGRectMake(85, _labelKjDateName.frame.origin.y+_labelKjDateName.frame.size.height+10, SCREEN_WIDTH-80, [Tool getTextHeight:_labelKjDateName]);
     
     _labelLine.frame  = CGRectMake(10, _labelSqDateName.frame.origin.y+_labelSqDateName.frame.size.height+20, SCREEN_WIDTH-20, 1);
     
@@ -300,11 +281,7 @@
          _labelTitle.frame  = CGRectMake(20, _labelLine.frame.origin.y+_labelLine.frame.size.height, SCREEN_WIDTH-40, 30);
          [_labelTitle setText:@"相似剧集"];
      }
-    
-    
-    _labelZyName.frame  = CGRectMake(60, _labelProducerName.frame.origin.y+_labelProducerName.frame.size.height+10, SCREEN_WIDTH-80, [self getTextHeight:_labelZyName]);
-
-    
+//    _labelZyName.frame  = CGRectMake(60, _labelProducerName.frame.origin.y+_labelProducerName.frame.size.height+10, SCREEN_WIDTH-80, [Tool getTextHeight:_labelZyName]);
 
 }
 
@@ -318,20 +295,6 @@
     [_labelTitle setText:dramaRelativesModel.text];
     [_labelContent setText:dramaRelativesModel.from];
 }
--(CGFloat) getTextHeight:(UILabel *)label
-{
-    
-    if(label.text!=nil && label.text.length>0){
-        NSDictionary *attrs1 = @{NSFontAttributeName:_labelZyName.font};
-        CGSize textMaxSize = CGSizeMake(SCREEN_WIDTH-80, MAXFLOAT);
-        CGSize textSize = [_labelZyName.text boundingRectWithSize:textMaxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs1 context:nil].size;
-        
-        return textSize.height;
 
-    }else{
-    
-        return 18;
-    }
-    
-   }
+
 @end

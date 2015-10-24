@@ -64,6 +64,10 @@
             [self.rightLable  setHidden:NO];
             [_imageviewHead setHidden:YES];
             [self.rightLable  setText:[Tool isNull:tModle.strRightName] ];
+            if ([tModle.strRightName isEqualToString:@"尚未完善资料"])
+            {
+                [self.rightLable setTextColor:[UIColor redColor]];
+            }
         }
     }
     else
@@ -72,6 +76,10 @@
         self.rightLable.frame = CGRectMake(100, 0, SCREEN_WIDTH-115, hegith);
         [self.leftLable  setText:tModle.strLeftName];
         [self.rightLable  setText:[Tool isNull:tModle.strRightName] ];
+        if ([tModle.strRightName isEqualToString:@"尚未完善资料"])
+        {
+            [self.rightLable setTextColor:[UIColor redColor]];
+        }
     }
     
   
