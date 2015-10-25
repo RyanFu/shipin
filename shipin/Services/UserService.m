@@ -402,5 +402,36 @@ IMP_SINGLETON(UserService)
 
 
 }
++ (void)makePublishPage:(void (^)(NSString *url))success failure:(void (^)(NSDictionary *error))failure {
 
+
+    HttpProtocol *httpProtocol = [[HttpProtocol alloc] init];
+    httpProtocol.requestUrl = [NSString stringWithFormat:@"%@", URL_WEB_PUBLISH];
+    httpProtocol.param = nil;
+    httpProtocol.method = @"get";
+    //FIXME 替换token变量
+    httpProtocol.token = [Config getToken];
+
+    [[HttpManager sharedInstance] httpWithRequest:httpProtocol success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+        if ([responseObject isKindOfClass:[NSString class]]) {
+
+
+            if (success)
+                success(responseObject);
+            else{
+                if (failure)
+                    failure(@{@"result" : responseObject});
+            }
+
+        }
+
+
+
+    }                                     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure)
+            failure(@{@"result" : error});
+    }];
+
+}
 @end

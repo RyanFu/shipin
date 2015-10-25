@@ -12,7 +12,7 @@
 #define      URL_SERVER_H5  @"http://www.17quannei.com/drama"
 
 #define     URL_SERVERADDRESS   @"http://121.199.49.164" //  //@"http://182.92.102.39:8080"
-
+//
 //#define     URL_SERVERURL   @"http://182.92.102.39" //@"http://182.92.102.39"
 //
 //#define     URL_SERVERADDRESS   @"http://182.92.102.39:8080" //  //@"http://182.92.102.39:8080"
@@ -51,3 +51,6 @@
 
 //反馈
 #define     URL_OPINION  [URL_SERVERADDRESS stringByAppendingString:@"/opinion"]
+
+//电脑发布
+#define     URL_WEB_PUBLISH  [URL_SERVERADDRESS stringByAppendingString:@"/drama/getWebPublishPage"]

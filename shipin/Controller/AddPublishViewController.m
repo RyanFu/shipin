@@ -112,9 +112,16 @@
     //电脑发布
     if (indexPath.row == 0 )
     {
-        UIWebViewLoad  *computerView = [[UIWebViewLoad alloc ] init];
-        computerView._url = URL_COMPUTERPUBLISH;
-        [self.navigationController pushViewController:computerView animated:YES];
+        [UserService makePublishPage:^(NSString *url) {
+
+            UIWebViewLoad  *computerView = [[UIWebViewLoad alloc ] init];
+            computerView._url = url;
+            [self.navigationController pushViewController:computerView animated:YES];
+//            __url=url;
+        } failure:^(NSDictionary *error) {
+            [Tool showWarningTip:@"服务器错误!" view:self.view time:2];
+        }];
+
     }
     //手机发布
     if (indexPath.row == 1 )

@@ -19,7 +19,8 @@
 {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor whiteColor]];
-    
+
+
     [self initViewCtrl];
 }
 

@@ -156,7 +156,7 @@
 
 -(void) loadNetWorkData
 {
-    [FVCustomAlertView showAlertOnView:self.view withTitle:@"加载中..." titleColor:[UIColor whiteColor] width:90.0 height:90.9 blur:YES backgroundImage:nil backgroundColor:[UIColor blackColor] cornerRadius:15.0 shadowAlpha:0.1 alpha:0.9 contentView:nil type:FVAlertTypeLoading allowTap:YES];
+    [FVCustomAlertView showAlertOnView:self.view withTitle:nil titleColor:[UIColor whiteColor] width:90.0 height:90.9 blur:YES backgroundImage:nil backgroundColor:[UIColor blackColor] cornerRadius:15.0 shadowAlpha:0.1 alpha:0.9 contentView:nil type:FVAlertTypeLoading allowTap:YES];
 //    读取本地数据
     if ([NetWorkState getNetWorkState] == NotReachable )
     {
@@ -553,7 +553,7 @@
         }
         if( clickIndex == 1)
         {
-            return 392; //项目信息cell 高度
+            return 352; //项目信息cell 高度
         }
         if( clickIndex == 2)
         {

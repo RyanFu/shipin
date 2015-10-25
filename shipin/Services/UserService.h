@@ -50,4 +50,8 @@ DEF_SINGLETON(UserService)
 //用户反馈
 +(void) opinion:(NSString *)content success:(void (^)(Boolean * boolean))success
                  failure:(void (^)( NSString *error))failure;
+
+//电脑发布生成
++(void) makePublishPage: (void (^)(NSString * url))success
+            failure:(void (^)( NSDictionary *error))failure;
 @end

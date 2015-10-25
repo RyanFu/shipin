@@ -10,9 +10,12 @@
 		D5FEE0131B770EB000E8AC03 /* uncheckawardblack.png in Resources */ = {isa = PBXBuildFile; fileRef = D5FEE0111B770EB000E8AC03 /* uncheckawardblack.png */; };
 		D5FEE0141B770EB000E8AC03 /* uncheckgoods.png in Resources */ = {isa = PBXBuildFile; fileRef = D5FEE0121B770EB000E8AC03 /* uncheckgoods.png */; };
 		E83F314DA110A9789FA9DBAC /* guide_image4.png in Resources */ = {isa = PBXBuildFile; fileRef = E83F386F64192113CCACD403 /* guide_image4.png */; };
+		E83F31896366ED56CDA3C6F9 /* FMLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = E83F36CE06F1543032BDB436 /* FMLogger.m */; };
 		E83F334D214D4AE40EF81344 /* guide_image3.png in Resources */ = {isa = PBXBuildFile; fileRef = E83F39F7E5D9A12C6BD242E2 /* guide_image3.png */; };
+		E83F3621DF5B11294E2BDC4E /* QJUncaughtExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E83F3E8AD3E039FBF33E6135 /* QJUncaughtExceptionHandler.m */; };
 		E83F38AF4EEEF7CE2E2C6AAF /* guide_image1.png in Resources */ = {isa = PBXBuildFile; fileRef = E83F3E97AAEF5C497C981981 /* guide_image1.png */; };
 		E83F3A7714728AC3C22CC03F /* guide_image5.png in Resources */ = {isa = PBXBuildFile; fileRef = E83F36C5C59FD58CDD1DA22B /* guide_image5.png */; };
+		E83F3BD142029DC874093E04 /* QJCrashFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = E83F38479361698341772976 /* QJCrashFoundation.m */; };
 		E83F3D8CD268878FE3AA8657 /* guide_image2.png in Resources */ = {isa = PBXBuildFile; fileRef = E83F3A7AB6530095080766F9 /* guide_image2.png */; };
 		EE20D6551B7F1347001B2E92 /* SetViewHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE20D6541B7F1347001B2E92 /* SetViewHeadTableViewCell.m */; };
 		EE625BBA1B8EAAF100DB8C2B /* Drama.m in Sources */ = {isa = PBXBuildFile; fileRef = EE625BB31B8EAAF100DB8C2B /* Drama.m */; };
@@ -198,9 +201,15 @@
 		D5FEE0111B770EB000E8AC03 /* uncheckawardblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uncheckawardblack.png; path = Resource/check/uncheckawardblack.png; sourceTree = "<group>"; };
 		D5FEE0121B770EB000E8AC03 /* uncheckgoods.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = uncheckgoods.png; path = Resource/check/uncheckgoods.png; sourceTree = "<group>"; };
 		E83F36C5C59FD58CDD1DA22B /* guide_image5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide_image5.png; sourceTree = "<group>"; };
+		E83F36CE06F1543032BDB436 /* FMLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMLogger.m; sourceTree = "<group>"; };
+		E83F371AD29804B72D0383E4 /* QJCrashFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJCrashFoundation.h; sourceTree = "<group>"; };
+		E83F38479361698341772976 /* QJCrashFoundation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJCrashFoundation.m; sourceTree = "<group>"; };
+		E83F385D0A4C62D0D6D17B16 /* FMLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMLogger.h; sourceTree = "<group>"; };
 		E83F386F64192113CCACD403 /* guide_image4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide_image4.png; sourceTree = "<group>"; };
 		E83F39F7E5D9A12C6BD242E2 /* guide_image3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide_image3.png; sourceTree = "<group>"; };
 		E83F3A7AB6530095080766F9 /* guide_image2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide_image2.png; sourceTree = "<group>"; };
+		E83F3CACD5B9671816FEA366 /* QJUncaughtExceptionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJUncaughtExceptionHandler.h; sourceTree = "<group>"; };
+		E83F3E8AD3E039FBF33E6135 /* QJUncaughtExceptionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJUncaughtExceptionHandler.m; sourceTree = "<group>"; };
 		E83F3E97AAEF5C497C981981 /* guide_image1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide_image1.png; sourceTree = "<group>"; };
 		EE20D6531B7F1347001B2E92 /* SetViewHeadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetViewHeadTableViewCell.h; path = Controller/User/SetViewHeadTableViewCell.h; sourceTree = "<group>"; };
 		EE20D6541B7F1347001B2E92 /* SetViewHeadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetViewHeadTableViewCell.m; path = Controller/User/SetViewHeadTableViewCell.m; sourceTree = "<group>"; };
@@ -534,6 +543,19 @@
 			name = check;
 			sourceTree = "<group>";
 		};
+		E83F32A991A241540814FE31 /* CrashFoundation */ = {
+			isa = PBXGroup;
+			children = (
+				E83F385D0A4C62D0D6D17B16 /* FMLogger.h */,
+				E83F36CE06F1543032BDB436 /* FMLogger.m */,
+				E83F371AD29804B72D0383E4 /* QJCrashFoundation.h */,
+				E83F38479361698341772976 /* QJCrashFoundation.m */,
+				E83F3CACD5B9671816FEA366 /* QJUncaughtExceptionHandler.h */,
+				E83F3E8AD3E039FBF33E6135 /* QJUncaughtExceptionHandler.m */,
+			);
+			path = CrashFoundation;
+			sourceTree = "<group>";
+		};
 		EE625BB11B8EAAE800DB8C2B /* Entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -746,6 +768,7 @@
 				EEE0F6ED1BA157690024DE6D /* ShareSDK */,
 				EEDCB60D1B63860F00EB9135 /* Tool */,
 				EEE0F6E11BA156180024DE6D /* View */,
+				E83F32A991A241540814FE31 /* CrashFoundation */,
 			);
 			path = shipin;
 			sourceTree = "<group>";
@@ -1406,6 +1429,9 @@
 				EE625BD01B8EAB3A00DB8C2B /* DramaModel.m in Sources */,
 				EE908C2A1B7EEB5E00505B82 /* SetViewController.m in Sources */,
 				EEDC187F1B8086B90013E61B /* DramaDetialTableViewCell.m in Sources */,
+				E83F31896366ED56CDA3C6F9 /* FMLogger.m in Sources */,
+				E83F3BD142029DC874093E04 /* QJCrashFoundation.m in Sources */,
+				E83F3621DF5B11294E2BDC4E /* QJUncaughtExceptionHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
