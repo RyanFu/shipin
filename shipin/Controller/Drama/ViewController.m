@@ -645,7 +645,7 @@
     }
     if ([ strBtnClick isEqualToString:@"btnAll" ])
     {
-        return 170;
+        return 195;
     }
     return 0;
 }

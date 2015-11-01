@@ -110,9 +110,9 @@
 		EEABE39F1B7F3F1F00C06C3A /* AttentionPeoperTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEABE39E1B7F3F1F00C06C3A /* AttentionPeoperTableViewCell.m */; };
 		EEABE3A21B7F478600C06C3A /* SystemMsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEABE3A11B7F478600C06C3A /* SystemMsgViewController.m */; };
 		EEABE3A81B7F494C00C06C3A /* SystemMsgTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEABE3A71B7F494C00C06C3A /* SystemMsgTableViewCell.m */; };
-		EEC827AD1BDB478C00299279 /* image_red.png in Resources */ = {isa = PBXBuildFile; fileRef = EEC827AC1BDB478C00299279 /* image_red.png */; settings = {ASSET_TAGS = (); }; };
-		EEC827B21BDB5B2700299279 /* btn_home_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = EEC827B01BDB5B2700299279 /* btn_home_selected.png */; settings = {ASSET_TAGS = (); }; };
-		EEC827B31BDB5B2700299279 /* btn_home.png in Resources */ = {isa = PBXBuildFile; fileRef = EEC827B11BDB5B2700299279 /* btn_home.png */; settings = {ASSET_TAGS = (); }; };
+		EEC827AD1BDB478C00299279 /* image_red.png in Resources */ = {isa = PBXBuildFile; fileRef = EEC827AC1BDB478C00299279 /* image_red.png */; };
+		EEC827B21BDB5B2700299279 /* btn_home_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = EEC827B01BDB5B2700299279 /* btn_home_selected.png */; };
+		EEC827B31BDB5B2700299279 /* btn_home.png in Resources */ = {isa = PBXBuildFile; fileRef = EEC827B11BDB5B2700299279 /* btn_home.png */; };
 		EED460871B89AAB5000C2CA5 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EED460861B89AAB5000C2CA5 /* SearchViewController.m */; };
 		EED4608A1B89BCD7000C2CA5 /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EED460891B89BCD7000C2CA5 /* SearchTableViewCell.m */; };
 		EED7DBAC1B85C4A0000EC19E /* image_defaulthead.png in Resources */ = {isa = PBXBuildFile; fileRef = EED7DBAB1B85C4A0000EC19E /* image_defaulthead.png */; };
@@ -1490,7 +1490,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1527,7 +1527,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1538,8 +1538,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A2D29204BCE2B344E2E7938B /* Pods.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
@@ -1550,7 +1550,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = shipin/shipin.pch;
 				INFOPLIST_FILE = shipin/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1567,8 +1567,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B4677DC82867240B0DF6E557 /* Pods.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
@@ -1579,7 +1579,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = shipin/shipin.pch;
 				INFOPLIST_FILE = shipin/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

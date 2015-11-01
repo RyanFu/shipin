@@ -205,11 +205,11 @@
         [Tool showWarningTip:@"请输入验证码" view:self.view time:1];
         return;
     }
-    if (![_strCode isEqualToString:textIdentifyingCode.text] )
-    {
-        [Tool showWarningTip:@"验证码错误" view:self.view time:1];
-        return;
-    }
+//    if (![_strCode isEqualToString:textIdentifyingCode.text] )
+//    {
+//        [Tool showWarningTip:@"验证码错误" view:self.view time:1];
+//        return;
+//    }
     AFHTTPRequestOperationManager *httpManager = [AFHTTPRequestOperationManager manager];
     NSString *strUrl = [NSString stringWithFormat:@"%@?mobile=%@&smsCode=%@",URL_LOGIN,textTel.text,textIdentifyingCode.text];
     
